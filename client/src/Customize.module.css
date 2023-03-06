@@ -1,0 +1,178 @@
+#leader{
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("../public/images/hotelsea.webp");
+    background-position:center ;
+    background-size: cover;
+    background-repeat:no-repeat ;
+    background-attachment: fixed;
+    height: 100vh;
+}
+.textcenter{
+   /* margin-top: 5vh;*/
+   padding-top: 5vh;
+  color:#fff;
+  margin-bottom:7vh;
+}
+.form{
+    /*background-color: #000;*/
+    background-color: #fff;
+    height:78vh;
+    width:50vw;
+    margin:auto;
+    padding:20px;
+    opacity: 0.7;
+}
+.textwhite{
+    border-bottom: 2px solid #3399ff;
+    /*color:#fff;*/
+    width:210px;
+    padding: 5px;
+    margin-bottom: 2vh;
+    font-size: 3vh;
+}
+.textprimary{
+    margin-left:1vh;
+}
+
+.radiob{
+    font-size: 2vh;
+    margin-top: 15px;
+    color:#000;
+    margin-left:4px;
+    margin-right: 1vw;
+}
+.inputgroup1{
+    width:300px;
+    margin:5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background: transparent;
+    /*color:#fff;*/
+    color:#000;
+    font-size: 2vh;
+    padding-bottom: 1vh;
+}
+
+.inputgroup1::placeholder{
+    color: #000;
+}
+.date::placeholder{
+    color:#000
+}
+.inputgroup2{
+    width:195px;
+    margin:5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background: transparent;
+    /*color:#fff;*/
+    padding-bottom: 1vh;
+    font-size: 2vh;
+    margin-bottom: 2vh;
+}
+.inputgroup2::placeholder{
+    color:#000
+}
+
+.inputgroup3{
+    margin-left: 6vw;
+    /*color:#fff;*/
+    color:#000;
+    padding-bottom: 1vh;
+    margin-top: 1vh;
+}
+.inputgroup3::placeholder{
+    color: #000;
+}
+.inputgroup4{
+    padding-top: 1vh;
+    width:300px;
+    margin:5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background: transparent;
+    color: #000;;
+    padding-bottom: 1vh;
+    font-size: 2vh;
+}
+.inputgroup4::placeholder{
+    color: #000;
+}
+/*.inputgroup41{
+    width:615px;
+    margin:5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background: transparent;
+    color:#000;
+    padding-bottom: 1vh;
+    font-size: 2vh;
+}*/
+.inputgroup41::placeholder{
+    color:#000
+}
+.inputgroup5::placeholder{
+    color:#000
+}
+.inputgroup6{
+    width:300px;
+    margin:5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background: transparent;
+    color:#000;
+    padding-bottom: 1vh;
+    font-size: 2vh;
+}
+.inputgroup6::placeholder{
+    color:#000
+}
+.inputgroup61{
+    width:615px;
+    margin:5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background: transparent;
+    color:#000;
+    padding-bottom: 1vh;
+    font-size: 2vh;
+}
+.inputgroup61::placeholder{
+    color:#000
+}
+.textprimary{
+    color:#000;
+    padding-bottom: 2vh;
+    margin-top: 1vh;
+    margin-right: 5vw;
+    margin-bottom: 10px;
+}
+.submit{
+    margin-top: 2vh;
+    padding: 1.5vh;
+    margin-right: 2vh;
+    color:#fff;
+    background-color: rgb(134, 134, 125);
+    border: none;
+    opacity: 1;
+    border-radius: 2.5vh;
+}
+.reset{
+    padding:1.5vh;
+    background-color:rgb(33, 169, 214);
+    color:#fff;
+    border:none;
+    opacity: 1;
+    border-radius: 2.5vh;
+}

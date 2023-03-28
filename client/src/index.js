@@ -13,8 +13,8 @@ import {AgenMain} from './AgenMain'
 import {AgenProf} from './AgenProf'
 import { Customize } from './Customize';
 import { Notification } from './Notification';
-
-
+import { CurrenCon } from './CurrenCon';
+import { AddPack } from './AddPack';
 
 
 
@@ -48,6 +48,8 @@ function App(){
           <Route exact path='/AgenProf' element={<AgenProf/>}/>
           <Route exact path='/Customize' element={<Customize/>}/>
           <Route exact path='/Notification' element={<Notification/>}/>
+          <Route exact path='/CurrenCon' element={<CurrenCon/>}/>
+          <Route exact path='/AddPack' element={<AddPack/>}/>
 
 
          

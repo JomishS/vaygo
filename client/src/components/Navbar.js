@@ -127,6 +127,15 @@ export function CustNavbar() {
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+          <li className='nav-item'>
+              <Link
+                to='/CurrenCon'
+                className='nav-links'
+                onClick={closeMobileMenu}
+                >
+                CURRENCY CONVERTOR
+              </Link>
+            </li>
             
             <li className='nav-item'>
               <Link

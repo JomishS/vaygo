@@ -1,4 +1,4 @@
-body {
+.headerwrapper {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -7,17 +7,17 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-ul {
+/*ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
-}
+}*/
 
-a {
+/*a {
   text-decoration: none;
-}
+}*/
 
 .header {
   width: 100%;
@@ -40,14 +40,15 @@ a {
   position: absolute;
   top: -60px;
   left: 50%;
-  transform: translatex(-50%);
+ transform: translatex(-50%);
 }
 .img {
+  background-image: url('./img-7.jpg');
    width: 120px;
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
-  display: block;
+  /*display: block;*/
   box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.18);
 } 
 .span {
@@ -106,6 +107,11 @@ a {
   justify-content: center;
   align-items: center;
   margin-top: 25px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 .links {
   display: flex;
@@ -124,10 +130,16 @@ a {
   display: flex;
   gap: 20px;
   flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 .taba {
   text-transform: uppercase;
   color: #818181;
+  text-decoration: none;
 }
 /*.headerwrapper .colscontainer .rightcol nav ul li:nthchild(1) a {
   color: #1d1d1d;
@@ -160,7 +172,7 @@ a {
 /* Responsiveness */
 
 @media (min-width: 868px) {
-  .headerwrapper .colscontainer {
+.colscontainer {
     max-width: 1200px;
     margin: 0 auto;
     width: 90%;

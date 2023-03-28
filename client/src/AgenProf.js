@@ -5,6 +5,7 @@ import AgenProfCSS from './AgenProf.module.css'
 
 
 
+
 export function AgenProf()
 {
     const navigate=useNavigate()
@@ -27,20 +28,16 @@ export function AgenProf()
                     <div className={AgenProfCSS.colscontainer}>
                         <div className={AgenProfCSS.leftcol}>
                             <div className={AgenProfCSS.imgcontainer}>
-                                <img className={AgenProfCSS.img} src='./bg.webp'/>
+                                <img className={AgenProfCSS.img} />
                                 <span className={AgenProfCSS.span}></span>
                             </div>
-                            <h2 className={AgenProfCSS.heading}>Anna Smith</h2>
-                            <p className={AgenProfCSS.des}>UX/UI Designer</p>
-                            <p className={AgenProfCSS.des}>anna@example.com</p>
-
-                            
+                            <h2 className={AgenProfCSS.heading}>Komban</h2>
+                            <p className={AgenProfCSS.des}>Trips and Tours</p>
+                                            
 
                             <div className={AgenProfCSS.content}>
                                 <p className={AgenProfCSS.para}>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam
-                                erat volutpat. Morbi imperdiet, mauris ac auctor dictum, nisl
-                                ligula egestas nulla.
+                                We are extemely happy to invite everyone to our trip
                                 </p>
 
                                 <ul className={AgenProfCSS.linkhead}>

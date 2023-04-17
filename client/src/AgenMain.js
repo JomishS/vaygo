@@ -25,8 +25,8 @@ export function AgenMain()
         <div className={AgenMainCSS.check}>
        <Link to='/AddPack'> <button className={AgenMainCSS.size}>Add Package</button></Link><br/>
 
-        <button className={AgenMainCSS.size}>Edit Package</button><br/>
-        <button className={AgenMainCSS.size}>Delete Package</button>
+       <Link to='/Sample'><button className={AgenMainCSS.size}>Edit Package</button></Link><br/>
+       <Link to='/Delete'><button className={AgenMainCSS.size}>Delete Package</button></Link><br/>
         <button className={AgenMainCSS.size}>View All Packages</button>
         </div>
         </div>

@@ -38,7 +38,7 @@ export function AddPack()
     const addFields = () => {
       let object = {
         dest: '',
-        destp: ''
+        destp: '' 
       }
   
       setFormFields([...formFields, object])
@@ -74,7 +74,8 @@ export function AddPack()
             <label className={AddCSS.label}>Enter Destination</label><br/>
             <input className={AddCSS.input} type="name" placeholder="Enter Place name" onChange={event=>handleFormChange(event,index)} value={form.name} required />
             <label className={AddCSS.label}>Upload images of destination</label><br/>
-            <input className={AddCSS.inpui} type="file" onChange={event=>handleFormChange(event,index)} value={form.file}></input><br/><br/>
+           {/* <input className={AddCSS.inpui} type="file" onChange={event=>handleFormChange(event,index)} value={form.file}></input><br/><br/>*/}
+           <input className={AddCSS.inpui} type='file' ></input><br/><br/>
             <label className={AddCSS.label}>Select the activities</label><br/>
             <div id='activitySection'></div>
             <input type="text" id='activityInput' onKeyDown={(e)=>{
@@ -83,7 +84,7 @@ export function AddPack()
   
                 addSearch(e.target.value)
               }
-            }}/><br/><br/>
+            }} onChange={event=>handleFormChange(event,index)} value={form.text}/><br/><br/>
 
             <button className={AddCSS.button} onClick={addFields}>Add Destination</button>
 

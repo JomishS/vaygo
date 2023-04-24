@@ -17,24 +17,12 @@ import { CurrenCon } from './CurrenCon';
 import { AddPack } from './AddPack';
 import Sample from './Sample'
 import { Delete} from './Delete';
+import {Result} from './Result'
 
 
 
-/*function App(){
-  return(
-    <>
-      <Router>
-        <Routes>
-          <Route path='/' exact component={Home} />
-          <Route path='/services' component={Services} />
-          <Route path='/products' component={Products} />
-          <Route path='/sign-up' component={SignUp} />
-        </Routes>
-      </Router>
-    </>
-  )
-}*/
 function App(){
+  
   return(
     <>
       <Router>
@@ -54,11 +42,13 @@ function App(){
           <Route exact path='/AddPack' element={<AddPack/>}/>
           <Route exact path='/Sample' element={<Sample/>}/>
           <Route exact path='/Delete' element={<Delete/>}/>
+          <Route exact path='/Result' element={<Result/>}/>
 
 
          
         </Routes>
       </Router>
+      
     </>
   )
 }
@@ -68,8 +58,3 @@ root.render(
   <App/>
   
 );
-// <Route exact path='/Customize' element={<Customize/>}/>
-//ReactDOM.render(<App/>,document.getElementById('root'))
-
-//<Route path='/' exact element={<Home/>} />
-//<Route path='/sign-up' element={<SignUp/>} />

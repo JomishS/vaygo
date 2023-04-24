@@ -10,11 +10,18 @@ const corsConfig = {
     credentials: true,
 };
 
+// var lenPreserver=useRef('')
+// var len
+
+// len=lenPreserver.current.value
+
 
 mongoose.set('strictQuery', true);
 mongoose.connect("mongodb://127.0.0.1:27017/waygo")
 const userCollection=require('./userSchema')
 const custCollection=require('./custSchema')
+const packCollection=require('./packSchema')
+
 
 
 const sessionStore=MongoStore.create({
@@ -55,8 +62,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
         req.session.username=res1[0].username
         req.session.userType=res1[0].type1
 
-        res.send(req.session.userType)
-        
+        res.send(req.session.userType)     
     }
 },(err)=>{
     console.log('Error')
@@ -64,6 +70,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
 })
 
 })
+
 
 
 app.post('/register',(req,res)=>{
@@ -103,6 +110,68 @@ app.post('/customize',(req,res)=>{
 
 
 })
+
+var j=0
+app.post('/package',(req,res)=>{
+
+    console.log(req.body.details.length)
+    //len=req.body.details.length
+    //console.log(req.body.url[0])
+    console.log('hello')
+     packCollection.create({pickpoint:req.body.pickpoint,det:req.body.details,url:req.body.url}).then((res4)=>{
+        // console.log('inside create funciton')
+    //packCollection.create({pickpoint:req.body.pickpoint,dayno:req.body.dayno,destination:req.body.destination,url:req.body.url,act:req.body.act}).then((res4)=>{
+    // for(j=0;j<req.body.details.length;j++){
+    //     packCollection2.insertMany({dayno:req.body.details[j].dayno,dest:req.body.details[j].dest,fil:req.body.details[j].fil,act:req.body.details[j].act}).then((res)=>{
+    //     //packCollection.insertMany({pickpoint:req.body.pickpoint,dayno:req.body.details[j].dayno,dest:req.body.details[j].dest,fil:req.body.details[j].fil,act:req.body.details[j].act}).then((res)=>{
+    //         console.log('inside add details')
+    //     })
+    // }
+       console.log('Successful')
+        res.send()
+    //    packCollection.insertOne({dayno:req.body.dayno,destination:req.body.destination,url:req.body.url,act:req.body.act}).then((res5)=>{
+    //        console.log('successful in inner details');
+    //        res.send()
+    //    })
+    },(err)=>{
+        console.log(err)
+        if(err.code===11000)
+        {
+            console.log("form cannot be submitted")
+            res.status(404).send("form cannot be submitted")
+        }
+    })
+
+    // packCollection.insertOne({dayno:req.body.dayno,destination:req.body.destination,url:req.body.url,act:req.body.act}).then((res5)=>{
+    //     console.log('successful in inner details')
+    //     res.send()
+    // },(err)=>{
+    //     console.log(err)
+    //     if(err.code===11000)
+    //     {
+    //         console.log("inner details cannot be submitted")
+    //         res.status(404).send("form cannot be submitted")
+    //     }
+    // })
+})
+app.post('/search',(req,res)=>{
+    var i=0
+    
+    console.log(req.body.place)
+   // for(i=0;i<len;i++){
+        //console.log(len)
+    packCollection.find({det:{$elemMatch:{dest:req.body.place}}}).then((res1)=>{
+        // console.log(det.dest)
+        console.log('Successful');
+        res.status(200).send()
+
+    },(err)=>{
+        console.log('Error')
+        res.status(404).send("Error occured in fetching data")
+    })
+// }
+    
+    })
 
 
 app.get('/isEligibleNoSession',(req,res)=>{

@@ -3,8 +3,9 @@ import React, {useState} from 'react'
 export function Delete()
 {
     const[image,setImage]=useState('')
-
+const[imgLink,setImgLink]=useState('')
     const data=new FormData()
+    
     const submitImage=()=>{
         //const data=new FormData()
         data.append('file',image)
@@ -19,6 +20,7 @@ export function Delete()
         .then((data)=>{
             console.log(data)
             console.log(data.url)
+            setImgLink(data.url)
         }).catch((err)=>{
             console.log(err)
         })       
@@ -38,7 +40,7 @@ export function Delete()
                     <div>
                         <div>
                             <input type='file' onChange={(e)=>{setImage(e.target.files[0])}}/>
-                           {/* <img src={setImage(e.target.files[0])} alt=''/> */}
+                           <img src={imgLink} alt=''/>
                             
 
                             <button onClick={submitImage}>upload image</button>

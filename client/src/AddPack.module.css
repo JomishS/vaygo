@@ -15,7 +15,8 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: rgb(130, 106, 251);
+  background: url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80");
+  background-size: cover;
 }
 .container {
   position: relative;
@@ -24,12 +25,12 @@
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px gray;
 }
 .header {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #333;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
 }
 .form {
@@ -87,18 +88,33 @@
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 .button{
-  padding: 1vh;
+  padding: 1.25vh;
   border: none;
   margin-right: 2vw;
   border-radius: 1vh;
   background-color: lightblue;
 }
 
+button{
+  padding: 1.25vh;
+  border: none;
+  margin-right: 2vw;
+  border-radius: 1vh;
+}
 
 .rep:not(.form){
   width: 60%;
 
-  background-color: #ece6e6;
+  background-color: #ffffff;
+}
+
+textarea{
+width: 150%;
+}
+
+input{
+  margin-top: 15px;
+  margin-right: 2vw;
 }
 
 

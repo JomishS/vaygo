@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState,useRef} from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import {CustNavbar} from './components/Navbar'
@@ -19,6 +19,15 @@ export function CustMain()
 
     },[])
 
+    
+    const [errName,setErrName] = useState('')
+    var placePreserver=useRef('')
+    var datePreserver=useRef('')
+    var place,date
+    
+    place=placePreserver.current.value
+    date=datePreserver.current.value
+
     return(
         <>
         <CustNavbar/>
@@ -29,8 +38,14 @@ export function CustMain()
                     <h1>Find your Next tour!</h1>
                 </div>
                 <form className={CustMainCSS.form}>
-                    <input type="text" list="mylist" placeholder="Where would you like to go?"/>
-                    <datalist id="mylist">
+                    {/* <input type="text" list="mylist" placeholder="Where would you like to go?"/> */}
+                    <input type="text" placeholder="Where would you like to go?" onChange={
+                    (e)=>{
+                    place= e.target.value;
+                    setErrName('')
+                    }
+                  } ref={placePreserver}/><br/>
+                    {/* <datalist id="mylist">
                         <option>London</option>
                         <option>Canada</option>
                         <option>Monaco</option>
@@ -38,9 +53,30 @@ export function CustMain()
                         <option>Japan</option>
                         <option>Switzerland</option>
                         <option>Seoul</option>
-                    </datalist>
-                    <input type="date" className={CustMainCSS.date}/>
-                    <a href="#" class={CustMainCSS.book}>book</a>
+                    </datalist> */}
+                    <input type="date" className={CustMainCSS.date} onChange={
+                    (e)=>{
+                    date= e.target.value;
+                    setErrName('')
+                    }
+                  } ref={datePreserver}/><br/> 
+                    {/* <a href="#" class={CustMainCSS.book}>book</a> */}
+                    <p style={{color:'red'}}>{errName}</p>
+                <button onClick={()=>{
+                if(!place || !date)
+                {
+                    alert('Please complete the user details')
+                }
+                else{
+                    axios.post('/search',{place:place,date:date}).then((res)=>{                
+                      console.log('Hello')
+                        navigate('/Result');
+                    },(err)=>{
+                        setErrName(err.response.data)
+                    })
+                }
+
+                }} class={CustMainCSS.book}>Book</button>
                 </form>
             </div>
         </div>

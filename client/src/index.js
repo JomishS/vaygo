@@ -21,6 +21,7 @@ import {Result} from './Result'
 import { Festivals } from './Festivals';
 import { Kerala } from './Kerala';
 import { Dispack } from './Dispack';
+import { TamilNadu } from './TamilNadu';
 
 
 
@@ -49,6 +50,7 @@ function App(){
           <Route exact path='/Festivals' element={<Festivals/>}/>
           <Route exact path='/Kerala' element={<Kerala/>}/>
           <Route exact path='/Dispack' element={<Dispack/>}/>
+          <Route exact path='/TamilNadu' element={<TamilNadu/>}/>
 
 
 

@@ -122,7 +122,7 @@ export function AddPack()
       setImage([...image,event.target.files[0]])
       
       
-      //submitImage()
+      // submitImage()
       
     }
 
@@ -148,7 +148,7 @@ export function AddPack()
     const submit=async e=>{
       e.preventDefault();
       console.log(formFields)
-       await submitImage()
+        await submitImage()
       console.log(imgLink)
 
 

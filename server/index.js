@@ -118,21 +118,11 @@ app.post('/package',(req,res)=>{
     //len=req.body.details.length
     //console.log(req.body.url[0])
     console.log('hello')
-     packCollection.create({pickpoint:req.body.pickpoint,det:req.body.details,url:req.body.url}).then((res4)=>{
-        // console.log('inside create funciton')
-    //packCollection.create({pickpoint:req.body.pickpoint,dayno:req.body.dayno,destination:req.body.destination,url:req.body.url,act:req.body.act}).then((res4)=>{
-    // for(j=0;j<req.body.details.length;j++){
-    //     packCollection2.insertMany({dayno:req.body.details[j].dayno,dest:req.body.details[j].dest,fil:req.body.details[j].fil,act:req.body.details[j].act}).then((res)=>{
-    //     //packCollection.insertMany({pickpoint:req.body.pickpoint,dayno:req.body.details[j].dayno,dest:req.body.details[j].dest,fil:req.body.details[j].fil,act:req.body.details[j].act}).then((res)=>{
-    //         console.log('inside add details')
-    //     })
-    // }
+     packCollection.create({pickpoint:req.body.pickpoint,price:req.body.price,name:req.body.name,det:req.body.details,url:req.body.url}).then((res4)=>{
+   
        console.log('Successful')
         res.send()
-    //    packCollection.insertOne({dayno:req.body.dayno,destination:req.body.destination,url:req.body.url,act:req.body.act}).then((res5)=>{
-    //        console.log('successful in inner details');
-    //        res.send()
-    //    })
+  
     },(err)=>{
         console.log(err)
         if(err.code===11000)
@@ -142,17 +132,7 @@ app.post('/package',(req,res)=>{
         }
     })
 
-    // packCollection.insertOne({dayno:req.body.dayno,destination:req.body.destination,url:req.body.url,act:req.body.act}).then((res5)=>{
-    //     console.log('successful in inner details')
-    //     res.send()
-    // },(err)=>{
-    //     console.log(err)
-    //     if(err.code===11000)
-    //     {
-    //         console.log("inner details cannot be submitted")
-    //         res.status(404).send("form cannot be submitted")
-    //     }
-    // })
+   
 })
 app.post('/search',(req,res)=>{
     var i=0
@@ -160,10 +140,13 @@ app.post('/search',(req,res)=>{
     console.log(req.body.place)
    // for(i=0;i<len;i++){
         //console.log(len)
-    packCollection.find({det:{$elemMatch:{dest:req.body.place}}}).then((res1)=>{
+         packCollection.find({$or:[{det:{$elemMatch:{dest:req.body.place}}},{det:{$elemMatch:{loc:req.body.place}}}]}).then((res1)=>{
+        // packCollection.find({det:{$elemMatch:{loc:req.body.place}}}).then((res1)=>{
+
         // console.log(det.dest)
         console.log('Successful');
-        res.status(200).send()
+        console.log(res1);
+        res.send(res1)
 
     },(err)=>{
         console.log('Error')
@@ -172,7 +155,8 @@ app.post('/search',(req,res)=>{
 // }
     
     })
-
+    // packCollection.find({det:{$elemMatch:{dest:req.body.place}}}).then((res1)=>{\
+        //  packCollection.find({det:{$elemMatch:{dest:req.body.place}||{loc:req.body.place}}}).then((res1)=>{
 
 app.get('/isEligibleNoSession',(req,res)=>{
   

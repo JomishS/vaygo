@@ -27,18 +27,24 @@ export function AddPack()
     const[Ur,setUr]=useState([])
     
     const [errorName,setErrorName] = useState('')
-    var pickpoPreserver,destPreserver,dayPreserver
+    var pickpoPreserver,pricePreserver,namePreserver,placePreserver
 
     pickpoPreserver=useRef('')
+    pricePreserver=useRef('')
+    namePreserver=useRef('')
+    placePreserver=useRef('')
 
     
 
-    var dest=[],day=[],pickpo
+    var pickpo,price,name,place
 
     pickpo=pickpoPreserver.current.value
+    price=pricePreserver.current.value
+    name=namePreserver.current.value
+    place=placePreserver.current.value
 
 
-    var url=[],path=[],i=0,j=0,k=0
+    var url=[],path=[],i=0,j=0,k=0,check
 
       // async function submitImage(){
       function submitImage(){
@@ -64,9 +70,9 @@ export function AddPack()
           console.log(data.url)
           url.push(data.url)
          // console.log(url[1])
-           setUr([...Ur,data.url])
+          // setUr([...Ur,data.url])
         //   console.log(Ur[1])
-            setImgLink(data.url)
+           // setImgLink(data.url)
            k=k+1
           if(k==(Dis.length))
          {
@@ -75,57 +81,22 @@ export function AddPack()
          })
          
         }
-       
-          // console.log(display)
-          // display.then((res)=>res.json())
-          // display.then((data)=>{
-          //   console.log(data)
-          // })
-        // response.json().then(function(response){
-        //   console.log(response.data.url)
-        // })
-      //   //response.json()
-      //   .then((res)=>res.json())
-      // .then((data)=>{
-      //     //resolve(data)
-      //         url.push(data.url)
-      //     console.log(url[0])
-      // //   })
-        // .then((res)=>res.json())        
-        // .then((data)=>{
-        //      console.log(data)
-        //    // console.log(data.url)
-        //     url.push(data.url)
-        //   console.log(url[1])
-        //    setUr([...Ur,data.url])
-        // //   console.log(Ur[1])
-        //     setImgLink(data.url)
-        //     console.log(Dis.length-1)
-        //     if(j==(Dis.length-1))
-        //     {
 
-        //     resolve(data)
-        //     }
-        //     //resolve(url[j])
-            
-        // }).catch((err)=>{
-        //     console.log(err)
-        // })  
-
-      
-      //   console.log(data)
        
         } 
         
       })  
-    // await myPromise
-  // console.log(Ur[1]) 
+
      }
 
     const [formFields, setFormFields] = useState([
       // { pick: '', dayno: '',dest:'',fil:'',act:'' },
-         {dayno:'',dest:'',fil:'',act:''}
+        //  {dayno:'',dest:'',fil:'',act:''}
+        {dest:'',dayno:'',loc:'',fil:'',act:''}
     ])
+    // const [formFields, setFormFields] = useState([
+    //     {dayno:'',loc:'',fil:'',act:''}
+    // ])
 
 
     //var hello
@@ -137,25 +108,40 @@ export function AddPack()
       setFormFields(data);
       setDis(data)
      // setImage(event.target.files[0])
-     //
+    //  place=data[index][dest]
+    // check=index
+    // // console.log(check)
+    // if('dest'==event.target.name)
+    // {
+    //   check=check+1
+    //    place=data[index][event.target.name]
+    //   //  data[check][event.target.name]=event.target.value
+    //   // console.log(data)
+    //  console.log(place)
+    // }
       setImage([...image,event.target.files[0]])
+      
+      
       //submitImage()
-
-      //console.log(data[index].fil)
-     // setImage(event=>[(event.target.files[0])
-     // setImage(data[index].fil)      
+      
     }
 
-    // const handleFormChangef = (event, index) => {
-    //   let data2 = [...formFields];
+    // const handleFormChange2 = (event,index) => {
+    //   let data = [...formFields]
     //   // console.log(index,event.target.name)  output=> 1 'name'
-    //   data2[index][event.target.name] = event.target.value;
-    //   setFormFields(data2);
-    //   setDis(data2)
+    //   data[index][event.target.name] = event.target.value;
+    //   // data[event.target.name] = event.target.value;
+    //   setFormFields(data);
+    //   setDis(data)
     //  // setImage(event.target.files[0])
-    //  setImage([...image,event.target.files[0]])
-    //  submitImage()
+    //   // setImage([...image,event.target.files[0]])
+    //   //submitImage()
+    //   dest=event.target.value
+    //   data[index+1][dest]=dest
+    //   console.log(dest)
+      
     // }
+
   
   
   //  async function submit  (e)  {
@@ -172,7 +158,7 @@ export function AddPack()
         
        // console.log(url[0])
 
-           axios.post('/package',{pickpoint:pickpo,details:Dis,url:url}).then((res)=>{
+           axios.post('/package',{pickpoint:pickpo,price:price,name:name,details:Dis,url:url}).then((res)=>{
 
       console.log(res.data+" successful")
             setErrorName('Value added ')
@@ -187,22 +173,54 @@ export function AddPack()
 //clearTimeout(myTimeout)
 
     }
+    
+
+    // const addFields = (index) =>{
+  
+
+    //   let object={
+    //     dayno:'',
+    //     loc:'',
+    //     fil:'',
+    //     act:''
+    //   }
+    //   setFormFields([...formFields, object])
+    //   if(check==1)
+    //   {
+    //   let data = [...formFields2];
+    //   data.splice(index, 1)
+    //   setFormFields2(data)
+
+    //   let data2=[...formFields]
+    //   data2.splice(index,1)
+    //   setFormFields(data2)
+    //   }
+    // }
 
     const addFields = () =>{
+      let data=[...formFields]
       let object={
-        dayno:'',
         dest:'',
+        dayno:'',
+        loc:'',
         fil:'',
         act:''
       }
-  
       setFormFields([...formFields, object])
+      
+      //  data[check][dest]=place
+      // console.log(data)
+      // check=1
     }
   
     const removeFields = (index) => {
       let data = [...formFields];
       data.splice(index, 1)
       setFormFields(data)
+      
+      // let data2=[...formFields]
+      // data2.splice(index,1)
+      // setFormFields(data2)
     }
 
 
@@ -224,35 +242,74 @@ export function AddPack()
                         setErrorName('')
                     }
           } ref={pickpoPreserver} />
+          <label className={AddCSS.label}>Package Name</label>
+         
+         <input className={AddCSS.inputf} type="text" placeholder="Enter package name" onChange={
+                   (e)=>{
+                       name=e.target.value  
+                       setErrorName('')
+                   }
+         } ref={namePreserver} />
+          <label className={AddCSS.label}>Enter Price</label>
+         
+         <input className={AddCSS.inputf} type="text" placeholder="Enter price of the package" onChange={
+                   (e)=>{
+                       price=e.target.value  
+                       setErrorName('')
+                   }
+         } ref={pricePreserver} />
         </div>
+
       {formFields.map((form,index)=>{
         return(
           <>
           <div className={AddCSS.rep} key={index}>
           <br/>
-          <label className={AddCSS.label}>Enter Day No.</label><br/>
-          <input className={AddCSS.input} type="number" name='dayno' placeholder="Enter Day number" onChange={event=>handleFormChange(event,index)} value={form.name} required />
+          <label className={AddCSS.label}>Enter Destination</label><br/>
+          <input className={AddCSS.input} type="name" name='dest' placeholder="Enter Destination" onChange={event=>handleFormChange(event,index)} value={form.name} required />
+{/* 
+          {formFields.map((form,index)=>{
+            return(
+              <> */}
+              <div  key={index}>
+              <label className={AddCSS.label}>Enter Day No.</label><br/>
+              <input className={AddCSS.input} type="number" name='dayno' placeholder="Enter Day number" onChange={event=>handleFormChange(event,index)} value={form.name} required />
 
-            <label className={AddCSS.label}>Enter Destination</label><br/>
-            <input className={AddCSS.input} type="name" name='dest' placeholder="Enter Place name" onChange={event=>handleFormChange(event,index) } value={form.dest} required />
+                <label className={AddCSS.label}>Enter Location</label><br/>
+                <input className={AddCSS.input} type="name" name='loc' placeholder="Enter Location" onChange={event=>handleFormChange(event,index) } value={form.name} required />
 
-            <label className={AddCSS.label}>Upload images of destination</label><br/>
-           <input className={AddCSS.inpui} type="file" name="fil" onChange={event=>handleFormChange(event,index)} value={form.name}></input><br/><br/>
-           
-
-
-            <label className={AddCSS.label}>Describe activities</label><br/>
-            <div id='activitySection'></div>
-            <textarea className={AddCSS.input} placeholder="Enter Activity" name='act' onChange={event=>handleFormChange(event,index)} value={form.act}></textarea>
-
-            <button className={AddCSS.button} onClick={addFields}>Add Destination</button>
+                <label className={AddCSS.label}>Upload images of destination</label><br/>
+              <input className={AddCSS.inpui} type="file" name="fil" onChange={event=>handleFormChange(event,index)} value={form.name}></input><br/><br/>
+              
 
 
-            <button className={AddCSS.button} onClick={addFields}>Add Day</button>
-            <button className={AddCSS.button} onClick={()=>removeFields(index)}>Remove</button>
-            
-            </div>
-            
+                <label className={AddCSS.label}>Describe activities</label><br/>
+                <div id='activitySection'></div>
+                <textarea className={AddCSS.input} placeholder="Enter Activity" name='act' onChange={event=>handleFormChange(event,index)} value={form.name}></textarea>
+
+                
+
+                <button className={AddCSS.button} onClick={addFields}>Add Day</button>
+                {/* <button className={AddCSS.button} onClick={addFields}>Add Location</button> */}
+                <button className={AddCSS.button} onClick={()=>addFields(index)}>Add Location</button>
+                index={index}
+                
+                <button className={AddCSS.button} onClick={()=>removeFields(index)}>Remove Location</button>
+                {/* index2={index2} */}
+                <br/><br/>
+                </div>
+                
+{/*                 
+            </>
+            )
+          })} */}
+            {/* <button className={AddCSS.button} onClick={()=>removeFields(index)}>Remove</button>
+                  <br/><br/> */}
+                  
+                  <button className={AddCSS.button} onClick={addFields}>Add Destination</button>
+
+                  {/* <button className={AddCSS.button} onClick={()=>removeFields(index)}>Remove Destination</button> */}
+          </div>
             </>
         )
       })}
@@ -260,40 +317,6 @@ export function AddPack()
         
 
 
-         {/* <button onClick={()=>{
-         submit()
-         console.log(pickpo)
-          console.log(Dis.length)
-            if(!pickpo)
-            {
-                alert("Please complete the details")
-            }
-            else{
-                //console.log(pickpo+' '+dest+' '+pickdate+' '+picktime+' '+preho+' '+fotyp+' '+adult+' '+chil+' '+inf+' '+redate+' '+chetime+' '+name+' '+num+' '+email+' ' +add+' ')
-                 axios.post('/package',{pickpoint:pickpo}).then((res)=>{
-                     console.log(res.data+" successful")
-                     setErrorName('Value added')
-                    // for(k in Dis.length)
-                    // {
-                    //   axios.post('/package',{dayno:Dis[k].dayno,destination:Dis[k].dest,image:Dis[k].fil,activity:Dis[k].act}).then((res1)=>{
-                    //     console.log(res1.data+'successful in inner details')
-                    //     setErrorName('Value added')
-                    //   })
-                    // }
-                     //navigate('/CustMain')
-                    //  setTimeout(()=>{
-                    //      navigate('/CustMain')
-                    //  },2000)
-                      navigate('/AgenMain')
-                 },(err)=>{
-                    setErrorName(err.response.data)
-                 })
-            }
-        }} type='submit' >Submit</button>  */}
-         {/* }}>Submit</button> */}
-                {/* <button type="reset" className={CustomizeCSS.reset}>CLEAR </button> */}
-                
-        {/* </form> */}
         <br/>
         <button  onClick={submit} type='submit'>Submit</button>
         </form>

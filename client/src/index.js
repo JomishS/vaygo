@@ -18,6 +18,9 @@ import { AddPack } from './AddPack';
 import Sample from './Sample'
 import { Delete} from './Delete';
 import {Result} from './Result'
+import { Festivals } from './Festivals';
+import { Kerala } from './Kerala';
+import { Dispack } from './Dispack';
 
 
 
@@ -43,6 +46,10 @@ function App(){
           <Route exact path='/Sample' element={<Sample/>}/>
           <Route exact path='/Delete' element={<Delete/>}/>
           <Route exact path='/Result' element={<Result/>}/>
+          <Route exact path='/Festivals' element={<Festivals/>}/>
+          <Route exact path='/Kerala' element={<Kerala/>}/>
+          <Route exact path='/Dispack' element={<Dispack/>}/>
+
 
 
          

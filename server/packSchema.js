@@ -4,18 +4,20 @@ const packData = new mongoose.Schema({
 
     pickpoint:{
         type:String,
-        required:true,
+         required:true,
     },
-    det:[
-        {
+    name:{
+        type:String,
+        required:true
+    },
+    price:{
+        type:String,
+        required:true
+    },
+    det:{
         type:Array,
         required:true
-        },
-    ],
-    // det:{
-    //     type:Array,
-    //     required:true
-    // },
+    },
     url:{
         type:Array,
         required:true

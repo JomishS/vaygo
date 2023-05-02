@@ -56,11 +56,11 @@ export function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/products'
+                to='/Festivals'
                 className='nav-links'
                 onClick={closeMobileMenu}
                 >
-                Products
+                Festivals
               </Link>
             </li>
 

@@ -1,8 +1,10 @@
-import React,{useEffect,useState,useRef} from 'react'
+import React,{useEffect,useState,useRef} from 'react';
 import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import {CustNavbar} from './components/Navbar'
 import CustMainCSS from './CustMain.module.css'
+
+
 
 
 export function CustMain()
@@ -19,14 +21,19 @@ export function CustMain()
 
     },[])
 
-    
+    // const dispatch = useDispatch();
     const [errName,setErrName] = useState('')
     var placePreserver=useRef('')
-    var datePreserver=useRef('')
-    var place,date
+    var place
+
+    const[dis,setdis]=useState(null)
+    // const myVariable="hello"
+    // dispatch(setMyVariable(dis))
+  
+    
     
     place=placePreserver.current.value
-    date=datePreserver.current.value
+
 
     return(
         <>
@@ -54,30 +61,36 @@ export function CustMain()
                         <option>Switzerland</option>
                         <option>Seoul</option>
                     </datalist> */}
-                    <input type="date" className={CustMainCSS.date} onChange={
+                    {/* <input type="date" className={CustMainCSS.date} onChange={
                     (e)=>{
                     date= e.target.value;
                     setErrName('')
                     }
-                  } ref={datePreserver}/><br/> 
+                  } ref={datePreserver}/><br/>  */}
                     {/* <a href="#" class={CustMainCSS.book}>book</a> */}
-                    <p style={{color:'red'}}>{errName}</p>
-                <button onClick={()=>{
-                if(!place || !date)
+                    </form>
+                      <p style={{color:'red'}}>{errName}</p>          
+                      <button onClick={()=>{
+                if(!place )
                 {
                     alert('Please complete the user details')
                 }
                 else{
-                    axios.post('/search',{place:place,date:date}).then((res)=>{                
-                      console.log('Hello')
-                        navigate('/Result');
+                    axios.post('/search',{place:place}).then((res)=>{    
+                      console.log(res.data) 
+                      setdis(res.data) 
+                 
+                        console.log(place)
+                      console.log('Hello');
+                        navigate('/Result',{state:{details:res.data,destination:place}});
                     },(err)=>{
                         setErrName(err.response.data)
                     })
                 }
 
-                }} class={CustMainCSS.book}>Book</button>
-                </form>
+                }} class={CustMainCSS.book}>Search</button>
+                {/* <button onClick={submit} className={CustMainCSS.book}>Book</button> */}
+                
             </div>
         </div>
 
@@ -124,13 +137,19 @@ export function CustMain()
       </div>
     </div>
     </>
+    
     )
+    
+    
 }
+// export function useFetch(){
+//   return dis
+// }
 
 function Card(props) {
     return (
       <>
-        <li className={CustMainCSS.ardsitem}>
+        <li className={CustMainCSS.cardsitem}>
           <Link className={CustMainCSS.cardsitemlink} to={props.path}>
             <figure className={CustMainCSS.cardsitempicwrap} data-category={props.label}>
               <img

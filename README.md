@@ -1,4 +1,4 @@
-Vygo vacation Management App
+Vaygo vacation Management App
 Welcome to the Vaygo Vacation Management App! This is a web-based application built with React that allows users to manage their vacations.
 
 
@@ -8,7 +8,7 @@ Some of the features of this application include:
 
 1. View all your upcoming festivals
 2. Add new packages
-3. Searcg for vacation
+3. Search for vacation
 
 
 Technologies Used

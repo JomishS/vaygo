@@ -17,7 +17,8 @@ const corsConfig = {
 
 
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb://127.0.0.1:27017/waygo")
+// mongoose.connect("mongodb://127.0.0.1:27017/waygo")
+mongoose.connect('mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority')
 const userCollection=require('./userSchema')
 const custCollection=require('./custSchema')
 const packCollection=require('./packSchema')
@@ -25,10 +26,11 @@ const packCollection=require('./packSchema')
 
 
 const sessionStore=MongoStore.create({
-    mongoUrl:'mongodb://127.0.0.1:27017/waygo',
+    // mongoUrl:'mongodb://127.0.0.1:27017/waygo',
+    mongoUrl:'mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority',
     collection:'sessions'
 })
-const sessionCollection = require('./sessionSchema')
+const sessionCollection = require('./sessionSchema');
 
 
 app.use(cors(corsConfig))
@@ -97,7 +99,7 @@ app.post('/customize',(req,res)=>{
     custCollection.create({pickpoint:req.body.pickpoint,destination:req.body.destination,pickdate:req.body.pickdate,picktime:req.body.picktime,preffered:req.body.preffered,food:req.body.food,adult:req.body.adult,children:req.body.children,infant:req.body.infant,returndate:req.body.returndate,checktime:req.body.checktime,fare:req.body.fare,adventure:req.body.adventure,camping:req.body.camping,name:req.body.name,num:req.body.num,email:req.body.email,address:req.body.address}).then((res3)=>{
         /*pickpoint:pickpo,destination:dest,pickdate:pickdate,prefferedhotel:preho,foodtype:fotyp,adult:adult,children:chil,infant:inf,returndate:redate,checktime:chetime,name:name,num:num,email:email,address:add*/
         /*,destination:req.body.destination,pickdate:req.body.pickdate,adult:req.body.adult,children:req.body.children,infant:req.body.infant,returndate:req.body.returndate,checktime:req.body.checktime,name:req.body.name,num:req.body.num,email:req.body.email,adddress:req.body.address*/
-       console.log('Successful')
+       console.log('Successful');
         res.send()
     },(err)=>{
         console.log(err)

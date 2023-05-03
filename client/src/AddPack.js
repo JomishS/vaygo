@@ -53,9 +53,10 @@ export function AddPack()
         
         const data=new FormData()
          for (j in image) {
-              // console.log(image[1]);
+              //console.log(image[1]);
 
         data.append('file',image[j])
+          // data.append('file',createImageBitmap)
         data.append('upload_preset','project')
         data.append('cloud_name','dxizvwfqg')
 
@@ -94,9 +95,7 @@ export function AddPack()
         //  {dayno:'',dest:'',fil:'',act:''}
         {dest:'',dayno:'',loc:'',fil:'',act:''}
     ])
-    // const [formFields, setFormFields] = useState([
-    //     {dayno:'',loc:'',fil:'',act:''}
-    // ])
+ 
 
 
     //var hello
@@ -119,28 +118,12 @@ export function AddPack()
     //   // console.log(data)
     //  console.log(place)
     // }
+
       setImage([...image,event.target.files[0]])
-      
-      
-      // submitImage()
       
     }
 
-    // const handleFormChange2 = (event,index) => {
-    //   let data = [...formFields]
-    //   // console.log(index,event.target.name)  output=> 1 'name'
-    //   data[index][event.target.name] = event.target.value;
-    //   // data[event.target.name] = event.target.value;
-    //   setFormFields(data);
-    //   setDis(data)
-    //  // setImage(event.target.files[0])
-    //   // setImage([...image,event.target.files[0]])
-    //   //submitImage()
-    //   dest=event.target.value
-    //   data[index+1][dest]=dest
-    //   console.log(dest)
-      
-    // }
+
 
   
   
@@ -148,15 +131,10 @@ export function AddPack()
     const submit=async e=>{
       e.preventDefault();
       console.log(formFields)
-        await submitImage()
+         await submitImage()
       console.log(imgLink)
 
 
-    //   const myTimeout=setTimeout(hello,8000)
-    //   hello()
-    //  function hello(){
-        
-       // console.log(url[0])
 
            axios.post('/package',{pickpoint:pickpo,price:price,name:name,details:Dis,url:url}).then((res)=>{
 
@@ -168,34 +146,10 @@ export function AddPack()
      setErrorName(err.response.data)
   })
  
-//}
-
-//clearTimeout(myTimeout)
 
     }
     
 
-    // const addFields = (index) =>{
-  
-
-    //   let object={
-    //     dayno:'',
-    //     loc:'',
-    //     fil:'',
-    //     act:''
-    //   }
-    //   setFormFields([...formFields, object])
-    //   if(check==1)
-    //   {
-    //   let data = [...formFields2];
-    //   data.splice(index, 1)
-    //   setFormFields2(data)
-
-    //   let data2=[...formFields]
-    //   data2.splice(index,1)
-    //   setFormFields(data2)
-    //   }
-    // }
 
     const addFields = () =>{
       let data=[...formFields]
@@ -208,9 +162,6 @@ export function AddPack()
       }
       setFormFields([...formFields, object])
       
-      //  data[check][dest]=place
-      // console.log(data)
-      // check=1
     }
   
     const removeFields = (index) => {
@@ -218,9 +169,6 @@ export function AddPack()
       data.splice(index, 1)
       setFormFields(data)
       
-      // let data2=[...formFields]
-      // data2.splice(index,1)
-      // setFormFields(data2)
     }
 
 
@@ -268,7 +216,7 @@ export function AddPack()
           <label className={AddCSS.label}>Enter Destination</label><br/>
           <input className={AddCSS.input} type="name" name='dest' placeholder="Enter Destination" onChange={event=>handleFormChange(event,index)} value={form.name} required />
 {/* 
-          {formFields.map((form,index)=>{
+          {formFields.map((form,index)=>{;
             return(
               <> */}
               <div  key={index}>
@@ -291,10 +239,10 @@ export function AddPack()
 
                 <button className={AddCSS.button} onClick={addFields}>Add Day</button>
                 {/* <button className={AddCSS.button} onClick={addFields}>Add Location</button> */}
-                <button className={AddCSS.button} onClick={()=>addFields(index)}>Add Location</button>
-                index={index}
+                {/* <button className={AddCSS.button} onClick={()=>addFields(index)}>Add Location</button>
+                index={index} */}
                 
-                <button className={AddCSS.button} onClick={()=>removeFields(index)}>Remove Location</button>
+                <button className={AddCSS.button} onClick={()=>removeFields(index)}>Remove Destination</button>
                 {/* index2={index2} */}
                 <br/><br/>
                 </div>

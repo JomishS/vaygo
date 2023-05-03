@@ -22,6 +22,9 @@ import { Festivals } from './Festivals';
 import { Kerala } from './Kerala';
 import { Dispack } from './Dispack';
 import { TamilNadu } from './TamilNadu';
+import { Karnataka } from './Karnataka';
+import { Himachal } from './Himachal';
+import { Rajastan } from './Rajastan';
 
 
 
@@ -51,6 +54,9 @@ function App(){
           <Route exact path='/Kerala' element={<Kerala/>}/>
           <Route exact path='/Dispack' element={<Dispack/>}/>
           <Route exact path='/TamilNadu' element={<TamilNadu/>}/>
+          <Route exact path='/Karnataka' element={<Karnataka/>}/>
+          <Route exact path='/Himachal' element={<Himachal/>}/>
+          <Route exact path='/Rajastan' element={<Rajastan/>}/>
 
 
 

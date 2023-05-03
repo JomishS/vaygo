@@ -82,8 +82,14 @@ export function CustMain()
                  
                         console.log(place)
                       console.log('Hello');
-                        navigate('/Result',{state:{details:res.data,destination:place}});
+                      setErrName('Redirecting to results page')
+                        // navigate('/Result',{state:{details:res.data,destination:place}})
+                        setTimeout(()=>{
+                          navigate('/Result',{state:{details:res.data,destination:place}});
+                      },2000)
                     },(err)=>{
+                        // navigate('/Error')
+                        // setErrName('Please Modify your search')
                         setErrName(err.response.data)
                     })
                 }
@@ -135,7 +141,7 @@ export function CustMain()
           </ul>
         </div>
       </div>
-    </div>
+    </div> 
     </>
     
     )

@@ -42,20 +42,20 @@ export function Festivals()
                                     navigate('/TamilNadu')
                                 }
                     
-                                // if(e.target.value=="KN")
-                                // {
-                                //     window.open(`kn.html`)
-                                // }
+                                if(e.target.value=="KN")
+                                {
+                                    navigate('/Karnataka')
+                                }
                     
-                                // if(e.target.value=="HP")
-                                // {
-                                //     window.open(`hp.html`)
-                                // }
+                                if(e.target.value=="HP")
+                                {
+                                    navigate('/Himachal')
+                                }
                     
-                                // if(e.target.value=="RJ")
-                                // {
-                                //     window.open(`rj.html`)
-                                // }
+                                if(e.target.value=="RJ")
+                                {
+                                    navigate('/Rajastan')
+                                }
                         }} >
                     {/* <select id={FestCSS.country} > */}
                         

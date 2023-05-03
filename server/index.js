@@ -125,7 +125,7 @@ app.post('/package',(req,res)=>{
   
     },(err)=>{
         console.log(err)
-        if(err.code===11000)
+        if(err.code==400)
         {
             console.log("form cannot be submitted")
             res.status(404).send("form cannot be submitted")
@@ -142,15 +142,27 @@ app.post('/search',(req,res)=>{
         //console.log(len)
          packCollection.find({$or:[{det:{$elemMatch:{dest:req.body.place}}},{det:{$elemMatch:{loc:req.body.place}}}]}).then((res1)=>{
         // packCollection.find({det:{$elemMatch:{loc:req.body.place}}}).then((res1)=>{
+            console.log('Successful');
+            if(res1.length===0)
+            {
+                res.status(404).send('please modify your search')
+            }
+            else{
 
-        // console.log(det.dest)
-        console.log('Successful');
-        console.log(res1);
-        res.send(res1)
+        // console.log(det.dest)   
+                console.log(res1);
+                res.send(res1)
+            }
 
     },(err)=>{
         console.log('Error')
-        res.status(404).send("Error occured in fetching data")
+        res.status(404).send("Error occured in fetching data");
+        console.log(err)
+        // if(err.code==400)
+        // {
+        //     console.log("Please modify your search")
+        //     res.status(404).send("please modify your search")
+        // }
     })
 // }
     

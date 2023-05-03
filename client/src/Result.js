@@ -108,7 +108,7 @@ const Container = styled.div`
 
   max-width: 1400px
   margin: auto;
-  height: fit-content;
+  height: fit-content
 `;
 const Main = styled.div`
   display: grid;

@@ -40,7 +40,7 @@ export function Rajastan()
             <i className={RajCSS.fasolidfastar}></i>
         </div>
         <div className={RajCSS.bay}>
-            {/* <div className={RajCSS.infopopup} onclick={event=>popupFunction(event)}> */}
+            {/* <div className={RajCSS.infopopup} onclick={event=>popupFunction(event)}> */};
             <div className={RajCSS.infopopup}>
             <button className={RajCSS.infobutton}> Read more </button>
             <span className={RajCSS.popupText}>Teej is a Hindu festival celebrated in India, primarily by women. It falls on the third day of the bright half of the lunar month of Shraavana. One of west India's biggest festivals, Teej commemorates two things - a woman's love for her husband and the advent of the monsoon season. The festival is marked by colourful celebrations and it also mark the union of Lord Shiva and Goddess Parvati. During Teej, women dress up in traditional attire, apply mehndi on their hands, and participate in various cultural activities. They fast and pray for the long life and well-being of their husbands. The fast is broken only after offering prayers to Lord Shiva and Goddess Parvati.

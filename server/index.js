@@ -15,14 +15,13 @@ const corsConfig = {
 
 // len=lenPreserver.current.value
 
-
+// var uri ='mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority' 
 mongoose.set('strictQuery', true);
 // mongoose.connect("mongodb://127.0.0.1:27017/waygo")
 mongoose.connect('mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority')
-const userCollection=require('./userSchema')
+const userCollection=require('./userSchema');
 const custCollection=require('./custSchema')
 const packCollection=require('./packSchema')
-
 
 
 const sessionStore=MongoStore.create({
@@ -147,7 +146,7 @@ app.post('/search',(req,res)=>{
             console.log('Successful');
             if(res1.length===0)
             {
-                res.status(404).send('please modify your search')
+                res.status(404).send('No Matching Packages Found')
             }
             else{
 

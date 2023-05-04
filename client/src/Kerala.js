@@ -1,9 +1,9 @@
 import React,{useEffect,useState} from 'react'
-// import '../../App.css'
+// import '../../App.css' 
 import { useNavigate,Link } from 'react-router-dom'
 import KeralaCSS from './Festivals.module.css'
 
-import { Navbar } from './components/Navbar';
+import { Navbar } from './components/Navbar'
 export function Kerala()
 {
 
@@ -18,7 +18,7 @@ const mdl = $('#modal');
         const txt = [...chldn].filter((d) => d.className == 'popupText');
         const msg = txt[0].innerText;
         $('#modal .body').innerText = msg;
-        $('#modal').classList.add('modalHasContent');
+        $('#modal').classList.add('modalHasContent')
     }
 
       const closeModal=(e)=>{

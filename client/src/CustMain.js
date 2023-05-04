@@ -69,7 +69,7 @@ export function CustMain()
                   } ref={datePreserver}/><br/>  */}
                     {/* <a href="#" class={CustMainCSS.book}>book</a> */}
                     </form>
-                      <p style={{color:'red'}}>{errName}</p>          
+                               
                       <button onClick={()=>{
                 if(!place )
                 {
@@ -95,6 +95,8 @@ export function CustMain()
                 }
 
                 }} class={CustMainCSS.book}>Search</button>
+                <br/>
+                <p style={{color:'white',fontSize:'30px'}}>{errName}</p> 
                 {/* <button onClick={submit} className={CustMainCSS.book}>Book</button> */}
                 
             </div>

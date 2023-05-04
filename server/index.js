@@ -21,7 +21,7 @@ mongoose.set('strictQuery', true);
 mongoose.connect('mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority')
 const userCollection=require('./userSchema');
 const custCollection=require('./custSchema')
-const packCollection=require('./packSchema')
+const packCollection=require('./packSchema');
 
 
 const sessionStore=MongoStore.create({

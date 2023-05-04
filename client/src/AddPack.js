@@ -15,7 +15,7 @@ export function AddPack()
         axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
         },(err)=>{
-            navigate('/login')
+            navigate('/login');
         })
 
     },[])

@@ -1,16 +1,19 @@
 
 const express=require('express')
+require('dotenv').config()
 const mongoose=require('mongoose')
 const MongoStore=require('connect-mongo')
 const session=require('express-session')
 const app=express()
-var cors = require('cors')
+var cors = require('cors');
+const bodyParser=require('body-parser')
+const {Configuration,OpenAIApi}=require('openai')
 const corsConfig = {
     origin: true,
     credentials: true,
 };
 
-// var lenPreserver=useRef('')
+// var lenPreserver=useRef('');
 // var len
 
 // len=lenPreserver.current.value
@@ -31,7 +34,7 @@ const sessionStore=MongoStore.create({
 })
 const sessionCollection = require('./sessionSchema');
 
-
+app.use(bodyParser.json())
 app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
@@ -45,7 +48,22 @@ app.use(session({
         maxAge:1000*60*60*24
     }
 }))
+const configuration=new Configuration({
+    apiKey:process.env.CHATBOT_KEY
+})
 
+const openai=new OpenAIApi(configuration)
+
+
+app.post('/chat',async(req,res)=>{
+    const {prompt}=req.body
+    const completion=await openai.createCompletion({
+        model: "text-davinci-003", 
+        prompt: prompt,
+        max_tokens: 500,
+    })
+    res.send(completion.data.choices[0].text) 
+})
 
 app.post('/login',(req,res)=>{
 

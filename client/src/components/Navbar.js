@@ -47,11 +47,11 @@ export function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/services'
+                to='/Ai'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-              Services
+              AI model
               </Link>
             </li>
             <li className='nav-item'>

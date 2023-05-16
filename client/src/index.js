@@ -25,6 +25,7 @@ import { TamilNadu } from './TamilNadu';
 import { Karnataka } from './Karnataka';
 import { Himachal } from './Himachal';
 import { Rajastan } from './Rajastan';
+import {Ai} from './Ai'
 
 
 
@@ -57,6 +58,7 @@ function App(){
           <Route exact path='/Karnataka' element={<Karnataka/>}/>
           <Route exact path='/Himachal' element={<Himachal/>}/>
           <Route exact path='/Rajastan' element={<Rajastan/>}/>
+          <Route exact path='/Ai' element={<Ai/>}/>
 
 
 

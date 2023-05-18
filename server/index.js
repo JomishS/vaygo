@@ -54,6 +54,10 @@ const configuration=new Configuration({
 
 const openai=new OpenAIApi(configuration)
 
+app.get("/",(req,res)=>{
+    res.send('hello world')
+})
+
 
 app.get("/",(req,res)=>{
     res.send('hello world')
@@ -264,6 +268,4 @@ app.get('/logout',(req,res)=>{
 
 })
 
-app.listen(5000,()=>{
-    console.log("Listening on port 5000...")
-})
+

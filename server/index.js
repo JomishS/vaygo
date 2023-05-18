@@ -54,6 +54,10 @@ const configuration=new Configuration({
 
 const openai=new OpenAIApi(configuration)
 
+app.get("/",(req,res)=>{
+    res.send('hello world')
+})
+
 
 app.post('/chat',async(req,res)=>{
     const {prompt}=req.body

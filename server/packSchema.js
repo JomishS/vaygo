@@ -2,6 +2,10 @@ const mongoose=require('mongoose')
 
 const packData = new mongoose.Schema({
 
+    userid:{
+        type:String,
+    },
+
     pickpoint:{
         type:String,
          required:true,

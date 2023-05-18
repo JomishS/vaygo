@@ -50,17 +50,28 @@ app.use(session({
 }))
 const configuration=new Configuration({
     apiKey:process.env.CHATBOT_KEY
-})
+}) 
 
 const openai=new OpenAIApi(configuration)
+
+
+app.get("/",(req,res)=>{
+    res.send('hello world')
+})
+
 
 
 app.post('/chat',async(req,res)=>{
     const {prompt}=req.body
     const completion=await openai.createCompletion({
         model: "text-davinci-003", 
-        prompt: prompt,
-        max_tokens: 500,
+     // prompt: "You are VayGo an AI assistant  that is an expert in planning trip itenaries.You know about festivals and travel destinations.You can provide advice on trip planning and cultural activities,places to visit,how you can visit and anything related to travelling.If you are unable to provide an answer to a question,please respond with the phrase  'I am sorry, I can only assist with trip planning.'Do not use any external URLs in your answers. Do not refer to any blogs in your answers.Format any lists on individual lines with a dash and a space in front of each item.",
+         prompt:prompt, 
+        max_tokens: 200,
+        // top_p: 1,
+        // frequency_penalty: 0,
+        // presence_penalty: 0,
+        // temperature: .5
     })
     res.send(completion.data.choices[0].text) 
 })
@@ -89,7 +100,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
 })
 
 })
-
+ 
 
 
 app.post('/register',(req,res)=>{
@@ -137,7 +148,7 @@ app.post('/package',(req,res)=>{
     //len=req.body.details.length
     //console.log(req.body.url[0])
     console.log('hello')
-     packCollection.create({pickpoint:req.body.pickpoint,price:req.body.price,name:req.body.name,det:req.body.details,url:req.body.url}).then((res4)=>{
+     packCollection.create({userid:req.body.Userid,pickpoint:req.body.pickpoint,price:req.body.price,name:req.body.name,det:req.body.details,url:req.body.url}).then((res4)=>{
    
        console.log('Successful')
         res.send()
@@ -203,7 +214,7 @@ app.get('/isEligibleNoSession',(req,res)=>{
     })
 
 })
-
+ 
 
 app.get('/isEligibleWithSession',(req,res)=>{
 
@@ -212,7 +223,8 @@ app.get('/isEligibleWithSession',(req,res)=>{
         {
             res.status(404).send('Not eligible')
         }else{
-            res.send('Eligible for this page')
+         // res.send('Eligible for this page')
+            res.send(req.session) 
         }
     },(err)=>{
         console.log('Error')

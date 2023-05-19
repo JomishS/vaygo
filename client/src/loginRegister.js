@@ -52,7 +52,7 @@ export function Login()
                     alert('Please complete the user details')
                 }
                 else{
-                    axios.post('https://vaygo.vercel.app/login',{email:email,password:pword}).then((res)=>{                
+                    axios.post('https://vaygo-ikoq.vercel.app/login',{email:email,password:pword}).then((res)=>{                
                         if(res.data=='customer')
                         {
                         navigate('/CustMain')

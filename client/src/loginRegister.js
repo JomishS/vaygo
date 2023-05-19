@@ -8,7 +8,7 @@ export function Login()
 {
     const navigate=useNavigate()
     useEffect(()=>{
-        axios.get('https://vaygo.vercel.app//isEligibleNoSession',{withCredentials:true}).then((res)=>{
+        axios.get('https://vaygo-ikoq.vercel.app/isEligibleNoSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page")
         },(err)=>{
             navigate('/login')

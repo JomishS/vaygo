@@ -6,7 +6,7 @@
   "main": "index.js",
   "type":"module",
   "scripts": {
-    "build": "nodemon index.js"
+    "build": "node index.js"
   },
   "author": "",
   "license": "ISC",

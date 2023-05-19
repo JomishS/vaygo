@@ -33,7 +33,7 @@ const sessionStore=MongoStore.create({
     collection:'sessions'
 })
 const sessionCollection = require('./sessionSchema');
-
+ 
 app.use(bodyParser.json())
 app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
@@ -49,9 +49,9 @@ app.use(session({
     }
 }))
 const configuration=new Configuration({
-    apiKey:process.env.CHATBOT_KEY
+    apiKey:process.env.API_KEY
 }) 
-
+ 
 const openai=new OpenAIApi(configuration)
 
 app.get("/",(req,res)=>{
@@ -267,5 +267,10 @@ app.get('/logout',(req,res)=>{
     res.send('Logged out')
 
 })
+
+app.listen(5000,()=>{
+    console.log("Listening on port 5000...")
+})
+
 
 

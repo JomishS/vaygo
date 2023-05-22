@@ -8,11 +8,13 @@ const app=express()
 var cors = require('cors');
 const bodyParser=require('body-parser')
 const {Configuration,OpenAIApi}=require('openai')
+
 const corsConfig = {
     origin: true,
     credentials: true,
 };
 
+// env.config()
 // var lenPreserver=useRef('');
 // var len
 
@@ -35,7 +37,7 @@ const sessionStore=MongoStore.create({
 const sessionCollection = require('./sessionSchema');
  
 app.use(bodyParser.json())
-app.use(cors(corsConfig))
+ app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.options('*',cors(corsConfig))
@@ -59,9 +61,6 @@ app.get("/",(req,res)=>{
 })
 
 
-app.get("/",(req,res)=>{
-    res.send('hello world')
-})
 
 
 
@@ -273,3 +272,6 @@ app.listen(5000,()=>{
 })
 
 
+app.listen(5000,()=>{
+    console.log("Listening on port 5000...")
+})

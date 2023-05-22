@@ -36,6 +36,7 @@ const sessionStore=MongoStore.create({
 const sessionCollection = require('./sessionSchema');
  
 app.use(bodyParser.json())
+app.use(cors())
 app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())

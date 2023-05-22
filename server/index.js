@@ -1,13 +1,30 @@
 
-const express=require('express')
-require('dotenv').config()
-const mongoose=require('mongoose')
-const MongoStore=require('connect-mongo')
-const session=require('express-session')
-const app=express()
-var cors = require('cors');
-const bodyParser=require('body-parser')
-const {Configuration,OpenAIApi}=require('openai')
+// const express=require('express')
+// require('dotenv').config()
+// const mongoose=require('mongoose')
+// const MongoStore=require('connect-mongo')
+// const session=require('express-session')
+// const app=express()
+// var cors = require('cors');
+// const bodyParser=require('body-parser')
+// const {Configuration,OpenAIApi}=require('openai')
+
+
+import express from 'express'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import env from 'dotenv'
+import {Configuration,OpenAIApi} from 'openai'
+import mongoose from 'mongoose'
+import session from 'express-session'
+import MongoStore from 'connect-mongo'
+
+const app=express() 
+const mongoose=mongoose()
+const session=session()
+const MongoStore=MongoStore()
+
+
 const corsConfig = {
     origin: true,
     credentials: true,
@@ -37,7 +54,7 @@ const sessionCollection = require('./sessionSchema');
  
 app.use(bodyParser.json())
 app.use(cors())
-app.use(cors(corsConfig))
+// app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.options('*',cors(corsConfig))

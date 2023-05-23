@@ -14,9 +14,9 @@ export function CustMain()
     useEffect(()=>{
         
         axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
-            console.log(res.data)
+            console.log('inside then')
         },(err)=>{
-            console.log('helo')
+            console.log(res.data)
             navigate('/sign-up')
         })
 

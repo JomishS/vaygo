@@ -8,7 +8,7 @@ export function Login()
 {
     const navigate=useNavigate()
     useEffect(()=>{
-        axios.get('/isEligibleNoSession',{withCredentials:true}).then((res)=>{
+        axios.get('https://vaygo.vercel.app/isEligibleNoSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page")
         },(err)=>{
             console.log(err)
@@ -53,7 +53,7 @@ export function Login()
                     alert('Please complete the user details')
                 }
                 else{
-                    axios.post('/login',{email:email,password:pword}).then((res)=>{                
+                    axios.post('https://vaygo.vercel.app/login',{email:email,password:pword}).then((res)=>{                
                         if(res.data=='customer')
                         {
                         navigate('/CustMain')

@@ -246,6 +246,7 @@ app.get('/isEligibleWithSession',(req,res)=>{
             res.status(404).send('Not eligible')
         }else{
          // res.send('Eligible for this page')
+            console.log('inside else')
             res.send(req.session) 
         }
     },(err)=>{

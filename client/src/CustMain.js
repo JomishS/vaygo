@@ -85,7 +85,7 @@ export function CustMain()
                       setErrName('Redirecting to results page')
                         // navigate('Result',{state:{details:res.data,destination:place}})
                         setTimeout(()=>{
-                          navigate('https://vaygo.vercel.app/Result',{state:{details:res.data,destination:place}});
+                          navigate('/Result',{state:{details:res.data,destination:place}});
                       },2000)
                     },(err)=>{
                         // navigate('/Error')

@@ -11,7 +11,7 @@ export function Customize()
 
     useEffect(()=>{
         
-        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+        axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
         },(err)=>{
             navigate('/login')
@@ -269,7 +269,7 @@ export function Customize()
                 alert("Please complete the details")
             }else{
                 //console.log(pickpo+' '+dest+' '+pickdate+' '+picktime+' '+preho+' '+fotyp+' '+adult+' '+chil+' '+inf+' '+redate+' '+chetime+' '+name+' '+num+' '+email+' ' +add+' ')
-                 axios.post('/customize',{pickpoint:pickpo,destination:dest,pickdate:pickdate,picktime:picktime,preffered:select,food:select2,adult:adult,children:chil,infant:inf,returndate:redate,checktime:chetime,fare:val,adventure:val2,camping:val3,name:name,num:num,email:email,address:add}).then((res)=>{
+                 axios.post('https://vaygo.vercel.app/customize',{pickpoint:pickpo,destination:dest,pickdate:pickdate,picktime:picktime,preffered:select,food:select2,adult:adult,children:chil,infant:inf,returndate:redate,checktime:chetime,fare:val,adventure:val2,camping:val3,name:name,num:num,email:email,address:add}).then((res)=>{
                      console.log(res.data+" successful")
                      setErrorName('Value added')
                      //navigate('/CustMain')

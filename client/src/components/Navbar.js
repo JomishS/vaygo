@@ -189,7 +189,7 @@ export function AgenNavbar() {
 
     useEffect(()=>{
         
-        axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
         },(err)=>{
             navigate('/login')

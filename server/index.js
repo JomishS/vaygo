@@ -167,6 +167,31 @@ app.post('/package',(req,res)=>{
 
    
 })
+ 
+
+app.get('/getpack',(req,res)=>{
+    var temp 
+    temp=req.session.userId
+    console.log(temp)
+    packCollection.find({userid:temp}).then((res1)=>{
+        console.log('successfull in getting package')
+        if(res1.length===0)
+            {
+                res.status(404).send('No Matching Packages Found')
+            }
+            else{  
+                console.log(res1);
+                res.send(res1)
+            }
+
+    },(err)=>{
+        console.log('Error')
+        res.status(404).send("Error occured in fetching data");
+        console.log(err)
+    })
+})
+
+
 app.post('/search',(req,res)=>{
     var i=0
     
@@ -191,17 +216,10 @@ app.post('/search',(req,res)=>{
         console.log('Error')
         res.status(404).send("Error occured in fetching data");
         console.log(err)
-        // if(err.code==400)
-        // {
-        //     console.log("Please modify your search")
-        //     res.status(404).send("please modify your search")
-        // }
+
     })
-// }
     
-    })
-    // packCollection.find({det:{$elemMatch:{dest:req.body.place}}}).then((res1)=>{\
-        //  packCollection.find({det:{$elemMatch:{dest:req.body.place}||{loc:req.body.place}}}).then((res1)=>{
+})
 
 app.get('/isEligibleNoSession',(req,res)=>{
   
@@ -272,6 +290,3 @@ app.listen(5000,()=>{
 })
 
 
-app.listen(5000,()=>{
-    console.log("Listening on port 5000...")
-})

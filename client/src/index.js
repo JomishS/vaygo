@@ -25,6 +25,7 @@ import { Karnataka } from './Karnataka';
 import { Himachal } from './Himachal';
 import { Rajastan } from './Rajastan';
 import {Ai} from './Ai'
+import { ViewPack } from './ViewPack';
 
 
 
@@ -57,6 +58,7 @@ function App(){
           <Route exact path='/Himachal' element={<Himachal/>}/>
           <Route exact path='/Rajastan' element={<Rajastan/>}/>
           <Route exact path='/Ai' element={<Ai/>}/>
+          <Route exact path='/ViewPack' element={<ViewPack/>}/>
 
 
 

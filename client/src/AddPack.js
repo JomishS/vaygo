@@ -12,7 +12,7 @@ export function AddPack()
  
     useEffect(()=>{
         
-        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+        axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
             console.log(res.data.userId)
             setUserid(res.data.userId)
@@ -137,7 +137,7 @@ export function AddPack()
 
       console.log(Userid)
 
-        axios.post('/package',{Userid:Userid,pickpoint:pickpo,price:price,name:name,details:Dis,url:url}).then((res)=>{
+        axios.post('https://vaygo.vercel.app/package',{Userid:Userid,pickpoint:pickpo,price:price,name:name,details:Dis,url:url}).then((res)=>{
 
       console.log(res.data+" successful")
             setErrorName('Value added ')

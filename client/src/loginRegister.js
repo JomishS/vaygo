@@ -11,6 +11,7 @@ export function Login()
         axios.get('https://vaygo.vercel.app/isEligibleNoSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page")
         },(err)=>{
+            console.log(err)
             navigate('/login')
         })
 

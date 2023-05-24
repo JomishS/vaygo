@@ -11,7 +11,7 @@ const {Configuration,OpenAIApi}=require('openai')
 //const cookieparser=require('cookie-parser')
 
 const corsConfig = {
-    origin: "https://vaygo-v1cg.vercel.app",
+    origin: true,
     credentials: true,
     exposedHeaders: ["Set-Cookie"],
 };

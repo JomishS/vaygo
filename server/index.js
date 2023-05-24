@@ -50,6 +50,7 @@ app.use(session({
     store:sessionStore,
     cookie:{
         maxAge:1000*60*60*24
+        domain: .vercel.app
     }
 }))
 const configuration=new Configuration({

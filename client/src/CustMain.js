@@ -16,7 +16,7 @@ export function CustMain()
         axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log('inside then')
         },(err)=>{
-            console.log(res.data)
+//             console.log(res.data)
             navigate('/sign-up')
         })
 

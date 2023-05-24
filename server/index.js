@@ -13,6 +13,7 @@ const {Configuration,OpenAIApi}=require('openai')
 const corsConfig = {
     origin: true,
     credentials: true,
+    exposedHeaders: ["set-cookie"],
 };
 
 // env.config()
@@ -49,8 +50,7 @@ app.use(session({
     resave:false,
     store:sessionStore,
     cookie:{
-        maxAge:1000*60*60*24,
-        domain: '.vercel.app'
+        maxAge:1000*60*60*24
     }
 }))
 const configuration=new Configuration({

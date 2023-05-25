@@ -11,7 +11,7 @@ const {Configuration,OpenAIApi}=require('openai')
 const cookieparser=require('cookie-parser')
 
 const corsConfig = {
-    origin: true,
+    origin: "*",
     credentials: true,
 //     exposedHeaders: ["Set-Cookie"],
 };

@@ -51,7 +51,7 @@ app.use(session({
     resave:false,
     store:sessionStore,
     cookie:{
-//          secure: true,
+        secure: true,
         maxAge:1000*60*60*24,
         domain:'.vaygo.online'
     }

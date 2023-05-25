@@ -34,7 +34,8 @@ const packCollection=require('./packSchema');
 const sessionStore=MongoStore.create({
     // mongoUrl:'mongodb://127.0.0.1:27017/waygo',
     mongoUrl:'mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority',
-    collection:'sessions'
+    collection:'sessions',
+    ttl: 1000*60*60*24
 })
 const sessionCollection = require('./sessionSchema');
  

@@ -57,10 +57,10 @@ app.use(session({
     }
 }))
 
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
+  next();
+});
 
 const configuration=new Configuration({
     apiKey:process.env.API_KEY

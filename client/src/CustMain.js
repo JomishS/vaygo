@@ -78,7 +78,7 @@ export function CustMain()
                     alert('Please complete the user details')
                 }
                 else{
-                    axios.post('/https://vaygo.vercel.app/search',{place:place}).then((res)=>{    
+                    axios.post('https://vaygo.vercel.app/search',{place:place}).then((res)=>{    
                       console.log(res.data) 
                       setdis(res.data) 
                  

@@ -150,6 +150,7 @@ export function CustNavbar() {
           </ul>
           {button && <Button onClick={()=>{
             axios.get('https://vaygo.vercel.app/logout',{withCredentials:true}).then((res)=>{
+                console.log(res.data)
                 navigate('/login')
             },(err)=>{
                 alert("Error in logout")

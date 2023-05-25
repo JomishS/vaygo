@@ -13,7 +13,7 @@ const {Configuration,OpenAIApi}=require('openai')
 const corsConfig = {
     origin: true,
     credentials: true,
-//     exposedHeaders: ["Set-Cookie"],
+    exposedHeaders: ["Set-Cookie"],
 };
 
 // env.config()

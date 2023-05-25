@@ -17,7 +17,7 @@ export function CustMain()
             console.log(res.data)
             
         },(err)=>{
-            console.log(err)
+//             console.log(err)
             navigate('/sign-up')
         })
 

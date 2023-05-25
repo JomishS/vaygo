@@ -52,7 +52,7 @@ app.use(session({
     cookie:{
 //         sameSite:"none",
         maxAge:1000*60*60*24,
-        domain:'.vaygo.online'
+        domain:'.vaygo-v1cg.vercel.app'
     }
 }))
 const configuration=new Configuration({

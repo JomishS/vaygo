@@ -8,12 +8,12 @@ const app=express()
 var cors = require('cors');
 const bodyParser=require('body-parser')
 const {Configuration,OpenAIApi}=require('openai')
-//const cookieparser=require('cookie-parser')
+const cookieparser=require('cookie-parser')
 
 const corsConfig = {
     origin: true,
     credentials: true,
-    exposedHeaders: ["Set-Cookie"],
+//     exposedHeaders: ["Set-Cookie"],
 };
 
 // env.config()
@@ -38,7 +38,7 @@ const sessionStore=MongoStore.create({
 })
 const sessionCollection = require('./sessionSchema');
  
-//app.use(cookieparser())
+app.use(cookieparser())
 app.use(bodyParser.json())
  app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))

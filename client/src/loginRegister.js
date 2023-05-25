@@ -11,7 +11,7 @@ export function Login()
         axios.get('https://vaygo.online/isEligibleNoSession',{withCredentials:true}).then((res)=>{
             console.log(res.data)
         },(err)=>{
-            console.log(err)
+//             console.log(err)
             navigate('/login')
         })
 

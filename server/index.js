@@ -51,16 +51,16 @@ app.use(session({
     store:sessionStore,
     cookie:{
 //         sameSite:"none",
-//         secure: true,
+         secure: true,
         maxAge:1000*60*60*24,
 //         domain:'.vaygo-v1cg.vercel.app'
     }
 }))
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
+//   next();
+// });
 
 const configuration=new Configuration({
     apiKey:process.env.API_KEY

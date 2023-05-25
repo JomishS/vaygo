@@ -51,7 +51,8 @@ app.use(session({
     store:sessionStore,
     cookie:{
 //         sameSite:"none",
-        maxAge:1000*60*60*24
+        maxAge:1000*60*60*24,
+        domain:'.vaygo.online'
     }
 }))
 const configuration=new Configuration({

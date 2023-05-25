@@ -55,6 +55,12 @@ app.use(session({
 //         domain:'.vaygo-v1cg.vercel.app'
     }
 }))
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://vaygo-v1cg.vercel.app'); // Replace with your actual domain
+  next();
+});
+
 const configuration=new Configuration({
     apiKey:process.env.API_KEY
 }) 

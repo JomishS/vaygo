@@ -57,7 +57,7 @@ app.use(session({
 }))
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://vaygo-v1cg.vercel.app'); // Replace with your actual domain
+  res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
   next();
 });
 

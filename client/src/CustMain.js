@@ -13,7 +13,7 @@ export function CustMain()
 
     useEffect(()=>{
         
-        axios.get('https://vaygo.online/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+        axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log(res.data)
             
         },(err)=>{

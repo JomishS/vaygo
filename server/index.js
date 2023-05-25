@@ -2,7 +2,7 @@
 const express=require('express')
 require('dotenv').config()
 const mongoose=require('mongoose')
-const MongoStore=require('connect-mongo')(session)
+const MongoStore=require('connect-mongo')
 const session=require('express-session')
 const app=express()
 var cors = require('cors');

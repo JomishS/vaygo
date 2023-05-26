@@ -15,7 +15,7 @@ const {withCookie}=require('micro-cookie')
 const corsConfig = {
     origin: true,
     credentials: true,
-//     exposedHeaders: ["Set-Cookie"],
+    exposedHeaders: ["Set-Cookie"],
 };
 
 // env.config()
@@ -47,19 +47,34 @@ app.use(bodyParser.json())
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.options('*',cors(corsConfig))
-app.use(session({
-    secret:'secret key123',
-    saveUninitialized:false,//saveUninitialised:false->prevents unchanged/"newly created session doc without any data added to it" from storing into the database
-    resave:false,
-    store:sessionStore,
-    cookie:{
-//         sameSite:'none',
-        secure: true,
-        maxAge:1000*60*60*24,
-        domain:'.vaygo.online'
-    }
-}))
+// app.use(session({
+//     secret:'secret key123',
+//     saveUninitialized:false,//saveUninitialised:false->prevents unchanged/"newly created session doc without any data added to it" from storing into the database
+//     resave:false,
+//     store:sessionStore,
+//     cookie:{
+// //         sameSite:'none',
+//         secure: true,
+//         maxAge:1000*60*60*24,
+//         domain:'.vaygo.online'
+//     }
+// }))
 
+const handler = async (req, res) => {
+  // Set the cookie
+  const cookie = withCookie(res);
+  cookie.set('myCookie', 'cookie value', {
+     
+    maxAge: 3600, // Cookie expiration time in seconds
+    path: '/', // Cookie path
+    domain: 'example.com', // Cookie domain
+    secure: true, // Only send the cookie over HTTPS
+    sameSite: 'none', // Allow cross-site access to the cookie
+  });
+
+  // Return the response
+  return send(res, 200, 'Cookie set');
+};
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
 //   next();

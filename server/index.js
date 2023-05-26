@@ -90,9 +90,10 @@ const configuration=new Configuration({
 const openai=new OpenAIApi(configuration)
 
 app.get("/",(req,res)=>{
-    req.session.myCookie = 'cookie value';
+    res.send('Hello world!');
+//     req.session.myCookie = 'cookie value';
 
-  res.send('Cookie set');
+//   res.send('Cookie set');
 })
 
 
@@ -130,8 +131,14 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
         req.session.username=res1[0].username
         req.session.userType=res1[0].type1
 //         req.session.myCookie = 'cookie value';
+        res.send(`
+    <script>
+      document.cookie = 'myCookie=cookie value; path=/';
+      window.location.href = '/success';
+    </script>
+  `);
 
-        res.send(req.session.userType)     
+//         res.send(req.session.userType)     
     }
 },(err)=>{
     console.log('Error')
@@ -140,6 +147,12 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
 
 })
  
+app.get('/success', (req, res) => {
+  // The cookie has been set on the client-side and sent to the server on subsequent requests
+  console.log(req.cookies.myCookie); // Access the cookie value from the request
+
+  res.send('Cookie set successfully');
+});
 
 
 app.post('/register',(req,res)=>{
@@ -274,7 +287,7 @@ app.get('/isEligibleNoSession',(req,res)=>{
  
 
 app.get('/isEligibleWithSession',(req,res)=>{
-
+    
     sessionCollection.find({session:JSON.stringify(req.session)}).then((res1)=>{
         if(res1.length==0) //no session document/session expired
         {

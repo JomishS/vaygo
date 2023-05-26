@@ -13,14 +13,24 @@ export function CustMain()
 
     useEffect(()=>{
         
-        axios.get('https://vaygo.online/isEligibleWithSession',{withCredentials:true}).then((res)=>{
-            console.log(res.data)
+//         axios.get('https://vaygo.online/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+//             console.log(res.data)
             
-        },(err)=>{
-//             console.log(err)
-             window.reload()
-            navigate('/sign-up')
-        })
+//         },(err)=>{
+// //             console.log(err)
+//              window.reload()
+//             navigate('/sign-up')
+//         })
+       
+    axios.get('https://vaygo.online/handler')
+  .then(response => {
+    console.log(response.data);
+    // Handle the response data
+  })
+  .catch(error => {
+    console.error(error);
+    // Handle the error
+  });
 
     },[])
 

@@ -15,12 +15,12 @@ export function Login()
             navigate('/login')
         })
         
-        axios.get('https://vaygo.online/test').then((res)=>{
-            console.log(res.data)
-        },(err)=>{
-//             console.log(err)
-            navigate('/success')
-        })
+//         axios.get('https://vaygo.online/test').then((res)=>{
+//             console.log(res.data)
+//         },(err)=>{
+// //             console.log(err)
+//             navigate('/success')
+//         })
 
     },[])
 

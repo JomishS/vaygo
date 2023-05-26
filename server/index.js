@@ -8,9 +8,9 @@ const app=express()
 var cors = require('cors');
 const bodyParser=require('body-parser')
 const {Configuration,OpenAIApi}=require('openai')
-// const cookieparser=require('cookie-parser')
-const {send}= require('micro')
-const {withCookie}=require('micro-cookie')
+const cookieparser=require('cookie-parser')
+// const {send}= require('micro')
+// const {withCookie}=require('micro-cookie')
 
 const corsConfig = {
     origin: true,
@@ -42,7 +42,7 @@ const sessionStore=MongoStore.create({
 const sessionCollection = require('./sessionSchema');
 //  const cookie = withCookie(res);
  
-// app.use(cookieparser())
+app.use(cookieparser())
 app.use(bodyParser.json())
  app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
@@ -56,6 +56,7 @@ app.use(session({
     cookie:{
         sameSite:'none',
         secure: true,
+        path: '/',
         maxAge:1000*60*60*24,
         domain:'.vaygo.online'
     }
@@ -126,6 +127,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
         req.session.userId=res1[0].id
         req.session.username=res1[0].username
         req.session.userType=res1[0].type1
+        req.session.myCookie = 'cookie value';
 
         res.send(req.session.userType)     
     }

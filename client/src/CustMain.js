@@ -18,7 +18,7 @@ export function CustMain()
             
         },(err)=>{
 //             console.log(err)
-//             window.reload()
+             window.reload()
             navigate('/sign-up')
         })
 

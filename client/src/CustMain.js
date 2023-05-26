@@ -18,6 +18,7 @@ export function CustMain()
             
         },(err)=>{
 //             console.log(err)
+            window.reload()
             navigate('/sign-up')
         })
 

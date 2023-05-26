@@ -67,7 +67,7 @@ const handler = async (req, res) => {
      
     maxAge: 3600, // Cookie expiration time in seconds
     path: '/', // Cookie path
-    domain: 'example.com', // Cookie domain
+    domain: '.vaygo.online', // Cookie domain
     secure: true, // Only send the cookie over HTTPS
     sameSite: 'none', // Allow cross-site access to the cookie
   });

@@ -9,6 +9,8 @@ var cors = require('cors');
 const bodyParser=require('body-parser')
 const {Configuration,OpenAIApi}=require('openai')
 // const cookieparser=require('cookie-parser')
+const {send}= require('micro')
+const {withCookie}=require('micro-cookie')
 
 const corsConfig = {
     origin: true,
@@ -51,6 +53,7 @@ app.use(session({
     resave:false,
     store:sessionStore,
     cookie:{
+        sameSite:'none',
         secure: true,
         maxAge:1000*60*60*24,
         domain:'.vaygo.online'

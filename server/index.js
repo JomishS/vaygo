@@ -15,7 +15,7 @@ const cookieparser=require('cookie-parser')
 const corsConfig = {
     origin: true,
     credentials: true,
-//     exposedHeaders: ["Set-Cookie"],
+    exposedHeaders: ["Set-Cookie"],
 };
 
 // env.config()
@@ -90,7 +90,9 @@ const configuration=new Configuration({
 const openai=new OpenAIApi(configuration)
 
 app.get("/",(req,res)=>{
-    res.send('hello world')
+    req.session.myCookie = 'cookie value';
+
+  res.send('Cookie set');
 })
 
 
@@ -127,7 +129,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
         req.session.userId=res1[0].id
         req.session.username=res1[0].username
         req.session.userType=res1[0].type1
-        req.session.myCookie = 'cookie value';
+//         req.session.myCookie = 'cookie value';
 
         res.send(req.session.userType)     
     }

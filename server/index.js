@@ -76,7 +76,7 @@ const handler = async (req, res) => {
   return send(res, 200, 'Cookie set');
 };
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://vaygo-v1cg.vercel.app/'); // Replace with your actual domain
+  res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
   next();
 });
 

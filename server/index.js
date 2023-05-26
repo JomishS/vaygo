@@ -40,7 +40,7 @@ const sessionStore=MongoStore.create({
     ttl: 1000*60*60*24
 })
 const sessionCollection = require('./sessionSchema');
- const cookie = withCookie(res);
+//  const cookie = withCookie(res);
  
 // app.use(cookieparser())
 app.use(bodyParser.json())
@@ -53,20 +53,20 @@ app.use(session({
     saveUninitialized:false,//saveUninitialised:false->prevents unchanged/"newly created session doc without any data added to it" from storing into the database
     resave:false,
     store:sessionStore,
-//     cookie:{
-// //         sameSite:'none',
-//         secure: true,
-//         maxAge:1000*60*60*24,
-//         domain:'.vaygo.online'
-//     }
-    cookie.set('myCookie', 'my-cookie', {
+    cookie:{
+        sameSite:'none',
+        secure: true,
+        maxAge:1000*60*60*24,
+        domain:'.vaygo.online'
+    }
+//     cookie.set('myCookie', 'my-cookie', {
      
-    maxAge: 3600, // Cookie expiration time in seconds
-    path: '/', // Cookie path
-    domain: '.vaygo.online', // Cookie domain
-    secure: true, // Only send the cookie over HTTPS
-    sameSite: 'none', // Allow cross-site access to the cookie
-  });
+//     maxAge: 3600, // Cookie expiration time in seconds
+//     path: '/', // Cookie path
+//     domain: '.vaygo.online', // Cookie domain
+//     secure: true, // Only send the cookie over HTTPS
+//     sameSite: 'none', // Allow cross-site access to the cookie
+//   });
 
 }))
 

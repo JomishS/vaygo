@@ -77,10 +77,10 @@ const handler = async (req, res) => {
   // Return the response
   return send(res, 200, 'Cookie set');
 };
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
+//   next();
+// });
 
 const configuration=new Configuration({
     apiKey:process.env.API_KEY

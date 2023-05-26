@@ -15,7 +15,7 @@ const {withCookie}=require('micro-cookie')
 const corsConfig = {
     origin: true,
     credentials: true,
-    exposedHeaders: ["Set-Cookie"],
+//     exposedHeaders: ["Set-Cookie"],
 };
 
 // env.config()

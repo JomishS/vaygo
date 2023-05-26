@@ -96,6 +96,14 @@ app.get("/",(req,res)=>{
 //   res.send('Cookie set');
 })
 
+app.get("/test",(req,res)=>{
+     res.send(`
+    <script>
+      document.cookie = 'myCookie=cookie value; path=/';
+      window.location.href = '/success';
+    </script>
+    })
+
 
 
 
@@ -131,11 +139,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
         req.session.username=res1[0].username
         req.session.userType=res1[0].type1
 //         req.session.myCookie = 'cookie value';
-        res.send(`
-    <script>
-      document.cookie = 'myCookie=cookie value; path=/';
-      window.location.href = '/success';
-    </script>
+    
   `);
 
 //         res.send(req.session.userType)     

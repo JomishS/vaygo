@@ -96,13 +96,13 @@ app.get("/",(req,res)=>{
 //   res.send('Cookie set');
 })
 
-app.get("/test",(req,res)=>{
-     res.send(`
-    <script>
-      document.cookie = 'myCookie=cookie value; path=/';
-      window.location.href = '/success';
-    </script>
-    })
+// app.get("/test",(req,res)=>{
+//      res.send(`
+//     <script>
+//       document.cookie = 'myCookie=cookie value; path=/';
+//       window.location.href = '/success';
+//     </script>
+//     })
 
 
 
@@ -151,12 +151,12 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
 
 })
  
-app.get('/success', (req, res) => {
+//app.get('/success', (req, res) => {
   // The cookie has been set on the client-side and sent to the server on subsequent requests
-  console.log(req.cookies.myCookie); // Access the cookie value from the request
+//   console.log(req.cookies.myCookie); // Access the cookie value from the request
 
-  res.send('Cookie set successfully');
-});
+//   res.send('Cookie set successfully');
+//});
 
 
 app.post('/register',(req,res)=>{

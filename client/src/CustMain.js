@@ -22,7 +22,7 @@ export function CustMain()
 //             navigate('/sign-up')
 //         })
        
-    axios.get('https://vaygo.online/handler')
+    axios.get('https://vaygo.online')
   .then(response => {
     console.log(response.data);
     // Handle the response data

@@ -40,6 +40,7 @@ const sessionStore=MongoStore.create({
     ttl: 1000*60*60*24
 })
 const sessionCollection = require('./sessionSchema');
+ const cookie = withCookie(res);
  
 // app.use(cookieparser())
 app.use(bodyParser.json())
@@ -47,23 +48,18 @@ app.use(bodyParser.json())
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.options('*',cors(corsConfig))
-// app.use(session({
-//     secret:'secret key123',
-//     saveUninitialized:false,//saveUninitialised:false->prevents unchanged/"newly created session doc without any data added to it" from storing into the database
-//     resave:false,
-//     store:sessionStore,
+app.use(session({
+    secret:'secret key123',
+    saveUninitialized:false,//saveUninitialised:false->prevents unchanged/"newly created session doc without any data added to it" from storing into the database
+    resave:false,
+    store:sessionStore,
 //     cookie:{
 // //         sameSite:'none',
 //         secure: true,
 //         maxAge:1000*60*60*24,
 //         domain:'.vaygo.online'
 //     }
-// }))
-
-const handler = async (req, res) => {
-  // Set the cookie
-  const cookie = withCookie(res);
-  cookie.set('myCookie', 'cookie value', {
+    cookie.set('myCookie', 'my-cookie', {
      
     maxAge: 3600, // Cookie expiration time in seconds
     path: '/', // Cookie path
@@ -72,6 +68,12 @@ const handler = async (req, res) => {
     sameSite: 'none', // Allow cross-site access to the cookie
   });
 
+}))
+
+const handler = async (req, res) => {
+  // Set the cookie
+  const cookie = withCookie(res);
+  
   // Return the response
   return send(res, 200, 'Cookie set');
 };

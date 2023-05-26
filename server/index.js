@@ -70,13 +70,13 @@ app.use(session({
 
 }))
 
-const handler = async (req, res) => {
-  // Set the cookie
-  const cookie = withCookie(res);
+// const handler = async (req, res) => {
+//   // Set the cookie
+//   const cookie = withCookie(res);
   
-  // Return the response
-  return send(res, 200, 'Cookie set');
-};
+//   // Return the response
+//   return send(res, 200, 'Cookie set');
+// };
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', 'https://vaygo.online'); // Replace with your actual domain
 //   next();

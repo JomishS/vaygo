@@ -8,7 +8,7 @@ const app=express()
 var cors = require('cors');
 const bodyParser=require('body-parser')
 const {Configuration,OpenAIApi}=require('openai')
-const cookieparser=require('cookie-parser')
+// const cookieparser=require('cookie-parser')
 // const {send}= require('micro')
 // const {withCookie}=require('micro-cookie')
 

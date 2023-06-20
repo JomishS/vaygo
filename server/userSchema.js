@@ -26,7 +26,7 @@ const userData = new mongoose.Schema({
 
 },{collection:'users'})
 
-
+ 
 
 
 module.exports=mongoose.model("users",userData)

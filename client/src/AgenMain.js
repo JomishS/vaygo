@@ -12,6 +12,7 @@ export function AgenMain()
         
         axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
+            console.log(res.data)
         },(err)=>{
             navigate('/login')
         })  
@@ -23,8 +24,9 @@ export function AgenMain()
         <div id={AgenMainCSS.leader}>
         <div className={AgenMainCSS.check}>
        <Link to='/AddPack'> <button className={AgenMainCSS.size}>Add Package</button></Link><br/>
-
+       <Link to='/Sample'><button className={AgenMainCSS.size}>Edit Package</button></Link><br/>
        {/* <Link to='/Sample'><button className={AgenMainCSS.size}>Edit Package</button></Link><br/> */}
+
        <Link to='/ViewPack'><button className={AgenMainCSS.size}>View All Packages</button></Link><br/>
         </div>
         </div>

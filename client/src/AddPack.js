@@ -3,7 +3,7 @@ import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import AddCSS from './AddPack.module.css'
 //import ipfs from './ipfs'
-  
+
 
 export function AddPack()
 {
@@ -12,7 +12,7 @@ export function AddPack()
  
     useEffect(()=>{
         
-        axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
             console.log(res.data.userId)
             setUserid(res.data.userId)
@@ -137,7 +137,7 @@ export function AddPack()
 
       console.log(Userid)
 
-        axios.post('https://vaygo.vercel.app/package',{Userid:Userid,pickpoint:pickpo,price:price,name:name,details:Dis,url:url}).then((res)=>{
+        axios.post('/package',{Userid:Userid,pickpoint:pickpo,price:price,name:name,details:Dis,url:url}).then((res)=>{
 
       console.log(res.data+" successful")
             setErrorName('Value added ')

@@ -8,12 +8,19 @@ export function Login()
 {
     const navigate=useNavigate()
     useEffect(()=>{
-        axios.get('/isEligibleNoSession',{withCredentials:true}).then((res)=>{
+        axios.get('https://vaygo.vercel.app/isEligibleNoSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page")
         },(err)=>{
-            console.log(err)
+//             console.log(err)
             navigate('/login')
         })
+        
+//         axios.get('https://vaygo.online/test').then((res)=>{
+//             console.log(res.data)
+//         },(err)=>{
+// //             console.log(err)
+//             navigate('/success')
+//         })
 
     },[])
 
@@ -53,8 +60,7 @@ export function Login()
                     alert('Please complete the user details')
                 }
                 else{
-                    axios.post('/login',{email:email,password:pword}).then((res)=>{    
-                                    
+                    axios.post('https://vaygo.vercel.app/login',{email:email,password:pword}).then((res)=>{                
                         if(res.data=='customer')
                         {
                         navigate('/CustMain')
@@ -87,7 +93,7 @@ export function Register()
 
     useEffect(()=>{
        
-        axios.get('https://vaygo.vercel.app/isEligibleNoSession',{withCredentials:true}).then((res)=>{
+        axios.get('/isEligibleNoSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session has expired")
         },(err)=>{
             navigate('/home')
@@ -180,7 +186,7 @@ export function Register()
                 alert("Please complete the details")
             }else{
                 //console.log(val+' '+uname+' '+pword+' '+email)
-                 axios.post('https://vaygo.vercel.app/register',{type:val,username:uname,password:pword,email:email}).then((res)=>{
+                 axios.post('/register',{type:val,username:uname,password:pword,email:email}).then((res)=>{
                      console.log(res.data+" successful")
                      setErrorName('User created,Redirecting to login page...')
                      setTimeout(()=>{

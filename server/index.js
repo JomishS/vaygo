@@ -8,6 +8,9 @@ const app=express()
 var cors = require('cors');
 const bodyParser=require('body-parser')
 const {Configuration,OpenAIApi}=require('openai')
+// const cookieparser=require('cookie-parser')
+// const {send}= require('micro')
+// const {withCookie}=require('micro-cookie')
 
 const corsConfig = {
     origin: true,
@@ -33,10 +36,13 @@ const bookCollection=require('./bookSchema')
 const sessionStore=MongoStore.create({
     // mongoUrl:'mongodb://127.0.0.1:27017/waygo',
     mongoUrl:'mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority',
-    collection:'sessions'
+    collection:'sessions',
+    // ttl: 1000*60*60*24
 })
 const sessionCollection = require('./sessionSchema');
+//  const cookie = withCookie(res);
  
+// app.use(cookieparser())
 app.use(bodyParser.json())
  app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
@@ -49,36 +55,34 @@ app.use(session({
     store:sessionStore,
     cookie:{
         maxAge:1000*60*60*24
-    }  
+    }
 }))
 const configuration=new Configuration({
     apiKey:process.env.API_KEY
 }) 
-  
+ 
 const openai=new OpenAIApi(configuration)
-
-app.get("/",(req,res)=>{
-    res.send('hello world')
-})
-
-
-
 
 
 app.post('/chat',async(req,res)=>{
-    const {prompt}=req.body
-    const completion=await openai.createCompletion({
+    const {message}=req.body
+    try{
+    const response=await openai.createCompletion({
         model: "text-davinci-003", 
-     // prompt: "You are VayGo an AI assistant  that is an expert in planning trip itenaries.You know about festivals and travel destinations.You can provide advice on trip planning and cultural activities,places to visit,how you can visit and anything related to travelling.If you are unable to provide an answer to a question,please respond with the phrase  'I am sorry, I can only assist with trip planning.'Do not use any external URLs in your answers. Do not refer to any blogs in your answers.Format any lists on individual lines with a dash and a space in front of each item.",
-         prompt:prompt, 
-        max_tokens: 200,
-        // top_p: 1,
-        // frequency_penalty: 0,
-        // presence_penalty: 0,
-        // temperature: .5
+        prompt: prompt,
+        max_tokens: 500,
+        temperature:0.5
     })
-    res.send(completion.data.choices[0].text) 
+    // res.send(completion.data.choices[0].text) 
+    res.json({message:response.data.choices[0].text})
+    }
+    catch(e)
+    {
+        console.log(e)
+        res.send(e).status(400)
+    }
 })
+
 
 app.post('/login',(req,res)=>{
 
@@ -95,8 +99,11 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
         req.session.userId=res1[0].id
         req.session.username=res1[0].username
         req.session.userType=res1[0].type1
+//         req.session.myCookie = 'cookie value';
+    
+  `);
 
-        res.send(req.session.userType)     
+//         res.send(req.session.userType)     
     }
 },(err)=>{
     console.log('Error')
@@ -104,7 +111,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
 })
 
 })
- 
+
 
 
 app.post('/register',(req,res)=>{
@@ -255,14 +262,15 @@ app.get('/isEligibleNoSession',(req,res)=>{
  
 
 app.get('/isEligibleWithSession',(req,res)=>{
-
+    
     sessionCollection.find({session:JSON.stringify(req.session)}).then((res1)=>{
         if(res1.length==0) //no session document/session expired
         {
+//             console.log('inside eligible')
             res.status(404).send('Not eligible')
+//             res.send('helo')
         }else{
-         // res.send('Eligible for this page')
-            res.send(req.session) 
+            res.send('Eligible for this page')
         }
     },(err)=>{
         console.log('Error')
@@ -294,7 +302,7 @@ app.get('/isEligibleWithSession',(req,res)=>{
         }
     })
 })*/
-
+ 
 
 app.get('/logout',(req,res)=>{
     req.session.destroy()

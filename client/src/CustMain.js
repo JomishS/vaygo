@@ -13,11 +13,24 @@ export function CustMain()
 
     useEffect(()=>{
         
-        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
-            console.log("User eligible for this page since session is present")
+        axios.get('https://vaygo.online/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+            console.log(res.data)
+            
         },(err)=>{
-            navigate('/login')
+//             console.log(err)
+//              window.reload()
+            navigate('/sign-up')
         })
+       
+//     axios.get('https://vaygo.online')
+//   .then(response => {
+//     console.log(response.data);
+//     // Handle the response data
+//   })
+//   .catch(error => {
+//     console.error(error);
+//     // Handle the error
+//   });
 
     },[])
 

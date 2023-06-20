@@ -27,6 +27,7 @@ mongoose.connect('mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.
 const userCollection=require('./userSchema');
 const custCollection=require('./custSchema')
 const packCollection=require('./packSchema');
+const bookCollection=require('./bookSchema')
 
 
 const sessionStore=MongoStore.create({
@@ -48,12 +49,12 @@ app.use(session({
     store:sessionStore,
     cookie:{
         maxAge:1000*60*60*24
-    }
+    }  
 }))
 const configuration=new Configuration({
     apiKey:process.env.API_KEY
 }) 
- 
+  
 const openai=new OpenAIApi(configuration)
 
 app.get("/",(req,res)=>{
@@ -163,9 +164,25 @@ app.post('/package',(req,res)=>{
             console.log("form cannot be submitted")
             res.status(404).send("form cannot be submitted")
         }
-    })
+    })   
+})
+ 
+app.post('/book',(req,res)=>{
 
+    console.log('hello')
+     bookCollection.create({agenid:req.body.agenid,name:req.body.name,email:req.body.email,num:req.body.num,num2:req.body.num2,add:req.body.add}).then((res4)=>{
    
+       console.log('Successful')
+        res.send()
+  
+    },(err)=>{
+        console.log(err)
+        if(err.code==400)
+        {
+            console.log("form cannot be submitted")
+            res.status(404).send("form cannot be submitted")
+        }
+    })   
 })
  
 
@@ -180,7 +197,7 @@ app.get('/getpack',(req,res)=>{
                 res.status(404).send('No Matching Packages Found')
             }
             else{  
-                console.log(res1);
+                // console.log(res1);
                 res.send(res1)
             }
 
@@ -251,7 +268,7 @@ app.get('/isEligibleWithSession',(req,res)=>{
         console.log('Error')
     })
 
-
+ 
 })
 
 
@@ -281,6 +298,7 @@ app.get('/isEligibleWithSession',(req,res)=>{
 
 app.get('/logout',(req,res)=>{
     req.session.destroy()
+
     res.send('Logged out')
 
 })

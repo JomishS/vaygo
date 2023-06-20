@@ -12,24 +12,25 @@ export async function ViewPack()
 
     useEffect(()=>{
         
-        axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
         },(err)=>{
             navigate('/login')
         }) 
-        
+        axios.get('/getpack')
+        .then((res)=>{
+            console.log('the pack details are')
+            res=res.data
+            setRes(res.data)
+             console.log(res[0].name)
+        },(err)=>{
+            console.log('error in getting package')
+        })
+         
         
     },[])
 
-    await axios.get('/getpack')
-    .then((res)=>{
-        console.log('the pack details are')
-        res=res.data
-        setRes(res.data)
-         console.log(res[0].name)
-    },(err)=>{
-        console.log('error in getting package')
-    })
+
     
     // const location=useLocation();
     var i,sel=[],j=0,data,temp,l,temp2,day=[],k=0,x
@@ -37,7 +38,7 @@ export async function ViewPack()
     // setvalue(location.state.details)
     // data=location.state.details
 
-    // console.log(Res)
+    //  console.log(Res)
     // console.log(res)
 
 

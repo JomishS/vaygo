@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react'
-import { useNavigate,useLocation } from 'react-router-dom'
+import { useNavigate,useLocation,Link } from 'react-router-dom'
 import axios from 'axios'
 import {CustNavbar} from './components/Navbar'
 import DispackCSS from './Dispack.module.css'
@@ -13,7 +13,7 @@ export function Dispack()
 
     useEffect(()=>{
         
-        axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
         },(err)=>{
             navigate('/login')
@@ -47,11 +47,15 @@ export function Dispack()
                 <ul>
                     <li>{elem.act}</li><br/>
                 </ul>
-                {/* <p><br/></p> */}
+                {/* <p><br/></p> */} 
 
               </>
             )
               })} 
+               <button onClick={()=>{
+                navigate('/BookPack',{state:{agenid:location.state.details.userid}})
+               }}>Book</button>
+              <br/><br/>
               </div>
          </div>
          </div>

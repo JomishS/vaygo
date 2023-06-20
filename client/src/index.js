@@ -26,6 +26,7 @@ import { Himachal } from './Himachal';
 import { Rajastan } from './Rajastan';
 import {Ai} from './Ai'
 import { ViewPack } from './ViewPack';
+import { BookPack } from './BookPack';
 
 
 
@@ -59,6 +60,8 @@ function App(){
           <Route exact path='/Rajastan' element={<Rajastan/>}/>
           <Route exact path='/Ai' element={<Ai/>}/>
           <Route exact path='/ViewPack' element={<ViewPack/>}/>
+          <Route exact path='/BookPack' element={<BookPack/>}/>
+
 
 
 

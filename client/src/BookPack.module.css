@@ -1,0 +1,31 @@
+.div{
+    margin-left: 15px;
+}
+button{
+    padding: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    border: 0px rgb(89, 89, 89);
+    cursor: pointer;
+    background-color: rgb(218, 218, 218)
+}
+.input{
+    width: 25%;
+    padding: 5px 10px;
+    margin-left: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: solid darkgray 1px;
+}
+#address{
+    height: 70px;
+    width: 40%;
+}
+.body{
+    background-image: url("https://images.unsplash.com/photo-1566041510394-cf7c8fe21800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}

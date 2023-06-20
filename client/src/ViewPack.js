@@ -39,20 +39,19 @@ export async function ViewPack()
         },(err)=>{
             navigate('/login')
         }) 
-        axios.get('/getpack')
-        .then((res)=>{
-            console.log('the pack details are')
-            res=res.data
-            setRes(res.data)
-             console.log(res[0].name)
-        },(err)=>{
-            console.log('error in getting package')
-        })
-         
+        
         
     },[])
 
-
+    await axios.get('/getpack')
+    .then((res)=>{
+        console.log('the pack details are')
+        res=res.data
+        setRes(res.data)
+         console.log(res[0].name)
+    },(err)=>{
+        console.log('error in getting package')
+    })
     
     // const location=useLocation();
     var i,sel=[],j=0,data,temp,l,temp2,day=[],k=0,x
@@ -60,7 +59,7 @@ export async function ViewPack()
     // setvalue(location.state.details)
     // data=location.state.details
 
-    //  console.log(Res)
+    // console.log(Res)
     // console.log(res)
 
 

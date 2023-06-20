@@ -15,7 +15,7 @@ const cookieparser=require('cookie-parser')
 const corsConfig = {
     origin: true,
     credentials: true,
-    exposedHeaders: ["Set-Cookie"],
+    // exposedHeaders: ["Set-Cookie"],
 };
 
 // env.config()
@@ -37,12 +37,12 @@ const sessionStore=MongoStore.create({
     // mongoUrl:'mongodb://127.0.0.1:27017/waygo',
     mongoUrl:'mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority',
     collection:'sessions',
-    ttl: 1000*60*60*24
+    // ttl: 1000*60*60*24
 })
 const sessionCollection = require('./sessionSchema');
 //  const cookie = withCookie(res);
  
-app.use(cookieparser())
+// app.use(cookieparser())
 app.use(bodyParser.json())
  app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
@@ -54,11 +54,11 @@ app.use(session({
     resave:false,
     store:sessionStore,
     cookie:{
-        sameSite:'none',
-        secure: true,
-        path: '/',
+        // sameSite:'none',
+        // secure: true,
+        // path: '/',
         maxAge:1000*60*60*24,
-        domain:'.vaygo.online'
+        // domain:'.vaygo.online'
     }
 //     cookie.set('myCookie', 'my-cookie', {
      

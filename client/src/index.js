@@ -25,12 +25,10 @@ import { Karnataka } from './Karnataka';
 import { Himachal } from './Himachal';
 import { Rajastan } from './Rajastan';
 import {Ai} from './Ai'
-<<<<<<< HEAD
 import { QueryClientProvider,QueryClient } from 'react-query';
-=======
+
 import { ViewPack } from './ViewPack';
 
->>>>>>> 1256b34a68e032d62bd326839a88d2780e83bb95
 
 
 function App(){

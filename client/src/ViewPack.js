@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import React,{useEffect} from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import axios from 'axios'
@@ -7,7 +7,6 @@ import {AgenNavbar} from './components/Navbar'
 export function AgenMain()
 {
     const navigate=useNavigate()
-=======
 import React,{useEffect,useState,useRef} from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import axios from 'axios'
@@ -19,13 +18,12 @@ export async function ViewPack()
     var res
     const [Res,setRes] = useState('')
 
->>>>>>> 1256b34a68e032d62bd326839a88d2780e83bb95
 
     useEffect(()=>{
         
         axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
-<<<<<<< HEAD
+
             console.log(res.data)
         },(err)=>{
             navigate('/login')
@@ -37,7 +35,7 @@ export async function ViewPack()
         </>
     )
 }
-=======
+
         },(err)=>{
             navigate('/login')
         }) 
@@ -136,4 +134,4 @@ export async function ViewPack()
         </>
     )
 }
->>>>>>> 1256b34a68e032d62bd326839a88d2780e83bb95
+

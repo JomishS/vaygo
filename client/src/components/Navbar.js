@@ -105,15 +105,15 @@ export function CustNavbar() {
 
   const navigate=useNavigate()
 
-    useEffect(()=>{
+//     useEffect(()=>{
         
-        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
-            console.log("User eligible for this page since session is present")
-        },(err)=>{
-            navigate('/login')
-        })
+//         axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+//             console.log("User eligible for this page since session is present")
+//         },(err)=>{
+//             navigate('/login')
+//         })
 
-    },[])
+//     },[])
 
   return (
     <>
@@ -149,7 +149,8 @@ export function CustNavbar() {
 
           </ul>
           {button && <Button onClick={()=>{
-            axios.get('/logout',{withCredentials:true}).then((res)=>{
+            axios.get('https://vaygo.vercel.app/logout',{withCredentials:true}).then((res)=>{
+                console.log(res.data)
                 navigate('/login')
             },(err)=>{
                 alert("Error in logout")

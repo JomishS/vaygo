@@ -10,7 +10,7 @@ export function AgenMain()
 
     useEffect(()=>{
         
-        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+        axios.get('https://vaygo.vercel.app/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
             console.log(res.data)
         },(err)=>{
@@ -25,7 +25,11 @@ export function AgenMain()
         <div className={AgenMainCSS.check}>
        <Link to='/AddPack'> <button className={AgenMainCSS.size}>Add Package</button></Link><br/>
 
+<<<<<<< HEAD
        <Link to='/Sample'><button className={AgenMainCSS.size}>Edit Package</button></Link><br/>
+=======
+       {/* <Link to='/Sample'><button className={AgenMainCSS.size}>Edit Package</button></Link><br/> */}
+>>>>>>> 1256b34a68e032d62bd326839a88d2780e83bb95
        <Link to='/ViewPack'><button className={AgenMainCSS.size}>View All Packages</button></Link><br/>
         </div>
         </div>

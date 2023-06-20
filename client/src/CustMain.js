@@ -13,11 +13,24 @@ export function CustMain()
 
     useEffect(()=>{
         
-        axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
-            console.log("User eligible for this page since session is present")
+        axios.get('https://vaygo.online/isEligibleWithSession',{withCredentials:true}).then((res)=>{
+            console.log(res.data)
+            
         },(err)=>{
-            navigate('/login')
+//             console.log(err)
+//              window.reload()
+            navigate('/sign-up')
         })
+       
+//     axios.get('https://vaygo.online')
+//   .then(response => {
+//     console.log(response.data);
+//     // Handle the response data
+//   })
+//   .catch(error => {
+//     console.error(error);
+//     // Handle the error
+//   });
 
     },[])
 
@@ -76,14 +89,14 @@ export function CustMain()
                     alert('Please complete the user details')
                 }
                 else{
-                    axios.post('/search',{place:place}).then((res)=>{    
+                    axios.post('https://vaygo.vercel.app/search',{place:place}).then((res)=>{    
                       console.log(res.data) 
                       setdis(res.data) 
                  
                         console.log(place)
                       console.log('Hello');
                       setErrName('Redirecting to results page')
-                        // navigate('/Result',{state:{details:res.data,destination:place}})
+                        // navigate('Result',{state:{details:res.data,destination:place}})
                         setTimeout(()=>{
                           navigate('/Result',{state:{details:res.data,destination:place}});
                       },2000)

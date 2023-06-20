@@ -8,11 +8,16 @@ const app=express()
 var cors = require('cors');
 const bodyParser=require('body-parser')
 const {Configuration,OpenAIApi}=require('openai')
+// const cookieparser=require('cookie-parser')
+// const {send}= require('micro')
+// const {withCookie}=require('micro-cookie')
+
 const corsConfig = {
     origin: true,
     credentials: true,
-}; 
+};
 
+// env.config()
 // var lenPreserver=useRef('');
 // var len
 
@@ -30,12 +35,15 @@ const packCollection=require('./packSchema');
 const sessionStore=MongoStore.create({
     // mongoUrl:'mongodb://127.0.0.1:27017/waygo',
     mongoUrl:'mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.mongodb.net/?retryWrites=true&w=majority',
-    collection:'sessions'
+    collection:'sessions',
+    // ttl: 1000*60*60*24
 })
 const sessionCollection = require('./sessionSchema');
-
+//  const cookie = withCookie(res);
+ 
+// app.use(cookieparser())
 app.use(bodyParser.json())
-app.use(cors(corsConfig))
+ app.use(cors(corsConfig))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.options('*',cors(corsConfig))
@@ -45,29 +53,36 @@ app.use(session({
     resave:false,
     store:sessionStore,
     cookie:{
-        maxAge:1000*60*60*24
+        // sameSite:'none',
+        // secure: true,
+        // path: '/',
+        maxAge:1000*60*60*24,
+        // domain:'.vaygo.online'
     }
+//     cookie.set('myCookie', 'my-cookie', {
+     
+//     maxAge: 3600, // Cookie expiration time in seconds
+//     path: '/', // Cookie path
+//     domain: '.vaygo.online', // Cookie domain
+//     secure: true, // Only send the cookie over HTTPS
+//     sameSite: 'none', // Allow cross-site access to the cookie
+//   });
+
 }))
-const configuration=new Configuration({ 
+const configuration=new Configuration({
     apiKey:process.env.CHATBOT_KEY
-}) 
+})
 
 const openai=new OpenAIApi(configuration)
+
 
 app.post('/chat',async(req,res)=>{
     const {message}=req.body
     try{
     const response=await openai.createCompletion({
         model: "text-davinci-003", 
-        // prompt: "You are VayGo an AI assistant  that is an expert in planning trip itenaries.You know about festivals and travel destinations.You can provide advice on trip planning and cultural activities,places to visit,how you can visit and anything related to travelling.If you are unable to provide an answer to a question,please respond with the phrase  'I am sorry, I can only assist with trip planning.'Do not use any external URLs in your answers. Do not refer to any blogs in your answers.Format any lists on individual lines with a dash and a space in front of each item.",
-        // prompt:"You can provide information realted to trip planning,travel destinations,festivals.For queries related to technology generate the message 'I don't know'",
-        //   prompt:prompt, 
-        prompt:`${message}`,
-        max_tokens: 100,
-        // top_p: 1, 
-        // frequency_penalty: 0,
-        // presence_penalty: 0, 
-        temperature: .5
+        prompt: prompt,
+        max_tokens: 500,
     })
     // res.send(completion.data.choices[0].text) 
     res.json({message:response.data.choices[0].text})
@@ -95,8 +110,11 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
         req.session.userId=res1[0].id
         req.session.username=res1[0].username
         req.session.userType=res1[0].type1
+//         req.session.myCookie = 'cookie value';
+    
+  `);
 
-        res.send(req.session.userType)     
+//         res.send(req.session.userType)     
     }
 },(err)=>{
     console.log('Error')
@@ -104,7 +122,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
 })
 
 })
- 
+
 
 
 app.post('/register',(req,res)=>{
@@ -168,6 +186,31 @@ app.post('/package',(req,res)=>{
 
    
 })
+ 
+
+app.get('/getpack',(req,res)=>{
+    var temp 
+    temp=req.session.userId
+    console.log(temp)
+    packCollection.find({userid:temp}).then((res1)=>{
+        console.log('successfull in getting package')
+        if(res1.length===0)
+            {
+                res.status(404).send('No Matching Packages Found')
+            }
+            else{  
+                console.log(res1);
+                res.send(res1)
+            }
+
+    },(err)=>{
+        console.log('Error')
+        res.status(404).send("Error occured in fetching data");
+        console.log(err)
+    })
+})
+
+
 app.post('/search',(req,res)=>{
     var i=0
     
@@ -192,17 +235,10 @@ app.post('/search',(req,res)=>{
         console.log('Error')
         res.status(404).send("Error occured in fetching data");
         console.log(err)
-        // if(err.code==400)
-        // {
-        //     console.log("Please modify your search")
-        //     res.status(404).send("please modify your search")
-        // }
+
     })
-// }
     
-    })
-    // packCollection.find({det:{$elemMatch:{dest:req.body.place}}}).then((res1)=>{\
-        //  packCollection.find({det:{$elemMatch:{dest:req.body.place}||{loc:req.body.place}}}).then((res1)=>{
+})
 
 app.get('/isEligibleNoSession',(req,res)=>{
   
@@ -221,14 +257,15 @@ app.get('/isEligibleNoSession',(req,res)=>{
  
 
 app.get('/isEligibleWithSession',(req,res)=>{
-
+    
     sessionCollection.find({session:JSON.stringify(req.session)}).then((res1)=>{
         if(res1.length==0) //no session document/session expired
         {
+//             console.log('inside eligible')
             res.status(404).send('Not eligible')
+//             res.send('helo')
         }else{
-         // res.send('Eligible for this page')
-            res.send(req.session) 
+            res.send('Eligible for this page')
         }
     },(err)=>{
         console.log('Error')
@@ -271,3 +308,4 @@ app.get('/logout',(req,res)=>{
 app.listen(5000,()=>{
     console.log("Listening on port 5000...")
 })
+

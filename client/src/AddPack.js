@@ -3,7 +3,11 @@ import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import AddCSS from './AddPack.module.css'
 //import ipfs from './ipfs'
+<<<<<<< HEAD
    
+=======
+  
+>>>>>>> 1256b34a68e032d62bd326839a88d2780e83bb95
 
 export function AddPack()
 {

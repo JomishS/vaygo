@@ -8,11 +8,19 @@ export function Login()
 {
     const navigate=useNavigate()
     useEffect(()=>{
-        axios.get('/isEligibleNoSession',{withCredentials:true}).then((res)=>{
-            console.log("User eligible for this page")
+        axios.get('https://vaygo.online/isEligibleNoSession',{withCredentials:true}).then((res)=>{
+            console.log(res.data)
         },(err)=>{
+//             console.log(err)
             navigate('/login')
         })
+        
+//         axios.get('https://vaygo.online/test').then((res)=>{
+//             console.log(res.data)
+//         },(err)=>{
+// //             console.log(err)
+//             navigate('/success')
+//         })
 
     },[])
 
@@ -52,7 +60,7 @@ export function Login()
                     alert('Please complete the user details')
                 }
                 else{
-                    axios.post('/login',{email:email,password:pword}).then((res)=>{                
+                    axios.post('https://vaygo.online/login',{email:email,password:pword}).then((res)=>{                
                         if(res.data=='customer')
                         {
                         navigate('/CustMain')

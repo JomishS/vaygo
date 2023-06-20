@@ -6,7 +6,7 @@ import {CustNavbar} from './components/Navbar'
 import styled from "styled-components";
 
 
-
+ 
 export function Result()
 {
     const navigate=useNavigate()

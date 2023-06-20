@@ -3,23 +3,25 @@ import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import AddCSS from './AddPack.module.css'
 //import ipfs from './ipfs'
-
-
+   
 
 export function AddPack()
 {
     const navigate=useNavigate()
-
+    const[Userid,setUserid]=useState('')
+ 
     useEffect(()=>{
         
         axios.get('/isEligibleWithSession',{withCredentials:true}).then((res)=>{
             console.log("User eligible for this page since session is present")
+            console.log(res.data.userId)
+            setUserid(res.data.userId)
         },(err)=>{
             navigate('/login');
         })
 
     },[])
-    
+     
    // const[image,setImage]=useState('')
     const[image,setImage]=useState([])
     const[Dis,setDis]=useState('')
@@ -34,7 +36,6 @@ export function AddPack()
     namePreserver=useRef('')
     placePreserver=useRef('')
 
-    
 
     var pickpo,price,name,place
 
@@ -134,9 +135,9 @@ export function AddPack()
          await submitImage()
       console.log(imgLink)
 
+      console.log(Userid)
 
-
-           axios.post('/package',{pickpoint:pickpo,price:price,name:name,details:Dis,url:url}).then((res)=>{
+        axios.post('/package',{Userid:Userid,pickpoint:pickpo,price:price,name:name,details:Dis,url:url}).then((res)=>{
 
       console.log(res.data+" successful")
             setErrorName('Value added ')

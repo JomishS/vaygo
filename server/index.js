@@ -30,7 +30,6 @@ mongoose.connect('mongodb+srv://JomishShajahan:93_xI5SReZ$*725@cluster0.io9hlzu.
 const userCollection=require('./userSchema');
 const custCollection=require('./custSchema')
 const packCollection=require('./packSchema');
-const bookCollection=require('./bookSchema')
 
 
 const sessionStore=MongoStore.create({
@@ -54,13 +53,26 @@ app.use(session({
     resave:false,
     store:sessionStore,
     cookie:{
-        maxAge:1000*60*60*24
+        // sameSite:'none',
+        // secure: true,
+        // path: '/',
+        maxAge:1000*60*60*24,
+        // domain:'.vaygo.online'
     }
+//     cookie.set('myCookie', 'my-cookie', {
+     
+//     maxAge: 3600, // Cookie expiration time in seconds
+//     path: '/', // Cookie path
+//     domain: '.vaygo.online', // Cookie domain
+//     secure: true, // Only send the cookie over HTTPS
+//     sameSite: 'none', // Allow cross-site access to the cookie
+//   });
+
 }))
 const configuration=new Configuration({
-    apiKey:process.env.API_KEY
-}) 
- 
+    apiKey:process.env.CHATBOT_KEY
+})
+
 const openai=new OpenAIApi(configuration)
 
 
@@ -101,8 +113,7 @@ userCollection.find({email:req.body.email,password:req.body.password}).then((res
         req.session.userType=res1[0].type1
 //         req.session.myCookie = 'cookie value';
     
-  `);
-
+    
 //         res.send(req.session.userType)     
     }
 },(err)=>{
@@ -171,25 +182,9 @@ app.post('/package',(req,res)=>{
             console.log("form cannot be submitted")
             res.status(404).send("form cannot be submitted")
         }
-    })   
-})
- 
-app.post('/book',(req,res)=>{
+    })
 
-    console.log('hello')
-     bookCollection.create({agenid:req.body.agenid,name:req.body.name,email:req.body.email,num:req.body.num,num2:req.body.num2,add:req.body.add}).then((res4)=>{
    
-       console.log('Successful')
-        res.send()
-  
-    },(err)=>{
-        console.log(err)
-        if(err.code==400)
-        {
-            console.log("form cannot be submitted")
-            res.status(404).send("form cannot be submitted")
-        }
-    })   
 })
  
 
@@ -204,7 +199,7 @@ app.get('/getpack',(req,res)=>{
                 res.status(404).send('No Matching Packages Found')
             }
             else{  
-                // console.log(res1);
+                console.log(res1);
                 res.send(res1)
             }
 
@@ -276,7 +271,7 @@ app.get('/isEligibleWithSession',(req,res)=>{
         console.log('Error')
     })
 
- 
+
 })
 
 
@@ -306,7 +301,6 @@ app.get('/isEligibleWithSession',(req,res)=>{
 
 app.get('/logout',(req,res)=>{
     req.session.destroy()
-
     res.send('Logged out')
 
 })

@@ -4,14 +4,6 @@ import { useNavigate,Link } from 'react-router-dom'
 import axios from 'axios'
 import {AgenNavbar} from './components/Navbar'
 
-export function AgenMain()
-{
-    const navigate=useNavigate()
-import React,{useEffect,useState,useRef} from 'react'
-import { useNavigate,Link } from 'react-router-dom'
-import axios from 'axios'
-import styled from "styled-components";
-
 export async function ViewPack()
 {
     const navigate=useNavigate()
@@ -28,17 +20,8 @@ export async function ViewPack()
         },(err)=>{
             navigate('/login')
         })  
-    },[])
 
-    return(
-        <>
-        </>
-    )
-}
 
-        },(err)=>{
-            navigate('/login')
-        }) 
         axios.get('/getpack')
         .then((res)=>{
             console.log('the pack details are')
@@ -105,7 +88,7 @@ export async function ViewPack()
         <>
         {/* <h1>{res[0].name}</h1> */}
        
-       {/* <h2 style={{marginTop:'7rem',fontSize:"3rem",textAlign:'center',}}> RESULTS</h2>
+      <h2 style={{marginTop:'7rem',fontSize:"3rem",textAlign:'center',}}> RESULTS</h2>
 
        <br/><br/>
        <Container>
@@ -131,8 +114,9 @@ export async function ViewPack()
            )
              })} 
                </Main>
-               </Container>     */}
+               </Container>     
+
         </>
     )
-} 
+}
 
